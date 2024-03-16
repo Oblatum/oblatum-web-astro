@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
-    "@iconify-json/mdi": "^1.1.64",
     "@types/node": "^20.11.27",
     "@typescript-eslint/parser": "^7.2.0",
     "@unocss/eslint-config": "^0.58.6",

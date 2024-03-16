@@ -34,9 +34,6 @@ devDependencies:
   '@eslint/eslintrc':
     specifier: ^3.0.2
     version: 3.0.2
-  '@iconify-json/mdi':
-    specifier: ^1.1.64
-    version: 1.1.64
   '@types/node':
     specifier: ^20.11.27
     version: 20.11.27
@@ -803,12 +800,6 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==, tarball: https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz}
-    dev: true
-
-  /@iconify-json/mdi@1.1.64:
-    resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==, tarball: https://registry.npmjs.org/@iconify-json/mdi/-/mdi-1.1.64.tgz}
-    dependencies:
-      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:
