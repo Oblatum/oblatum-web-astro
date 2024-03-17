@@ -14,16 +14,20 @@
   "dependencies": {
     "@astrojs/check": "^0.5.9",
     "@astrojs/lit": "4.0.1",
+    "@astrojs/node": "8.2.3",
     "@astrojs/solid-js": "4.0.1",
     "@material/web": "^1.3.0",
     "@webcomponents/template-shadowroot": "0.2.1",
-    "astro": "^4.5.4",
+    "astro": "^4.5.5",
+    "lightningcss": "^1.24.1",
     "lit": "3.1.2",
+    "mitt": "^3.0.1",
+    "nanostores": "^0.10.0",
     "solid-js": "1.8.15"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
-    "@types/node": "^20.11.27",
+    "@types/node": "^20.11.28",
     "@typescript-eslint/parser": "^7.2.0",
     "@unocss/eslint-config": "^0.58.6",
     "@unocss/reset": "^0.58.6",
