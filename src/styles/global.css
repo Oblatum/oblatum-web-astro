@@ -1,0 +1,13 @@
+:root {
+  --md-icon-font: 'Material Symbols Rounded';
+  --md-ref-typeface-brand: 'Open Sans';
+  --md-ref-typeface-plain: system-ui;
+  /* Generated from Material Theme Builder Figma plugin
+  or `material-color-utilities`. */
+  --md-sys-color-primary: #32ADFE;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #6FF7F6;
+  --md-sys-color-on-primary-container: #002020;
+  /* ... */
+  --oblatum-color-primary: 41, 170, 224;
+}
