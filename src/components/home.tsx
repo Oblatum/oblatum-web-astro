@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import MdRipple from '~/components/ui/md-ripple'
 
 export function Home () {
@@ -15,7 +16,11 @@ export function Home () {
   ];
 
   // 在 colors 中随机不连续的取出 8 个颜色，每次取到的都不同
-  const randomColors = colors.sort(() => Math.random() - 0.5).slice(0, 8);
+  const [randomColors, setRandomColors] = useState<string[]>([]);
+
+  useEffect(() => {
+    setRandomColors(()=>colors.sort(() => Math.random() - 0.5).slice(0, 8));
+  }, []);
 
   return (
     <div className=" grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
@@ -34,7 +39,7 @@ export function Home () {
         ><MdRipple />
           {
             ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png'].map((i)=>(
-              <div className="mx-auto size-16 md:(size-24)">
+              <div key={i} className="mx-auto size-16 md:(size-24)">
                 <img src={`/icons/${i}`} alt={i} className='size-full' loading={"lazy"} decoding={"async"}/>
               </div>
             ))
@@ -52,13 +57,14 @@ export function Home () {
           className="grid col-span-full grid-cols-4 my-4 grow justify-items-center gap-8 md:(col-span-2 mt-24)"
         >
           {
-            randomColors.map((color) => (
-              <div
+            randomColors.map((c) => (
+              <span
+                key={c}
                 className={`size-14 md:(size-18) rounded-50 shadow-md relative`}
-                style={{ "backgroundColor": `#${color}` }}
+                style={{ "backgroundColor": `#${c}` }}
               >
                 <MdRipple />
-              </div>
+              </span>
             ))
           }
         </div>
@@ -79,7 +85,7 @@ export function Home () {
         <div className="grid col-span-full grid-cols-3 my-4 justify-items-center gap-6 md:(col-span-2 mt-24)">
           {
             ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png'].map((i)=>(
-              <div className="mx-auto size-16 md:(size-24)">
+              <div key={i} className="mx-auto size-16 md:(size-24)">
                 <img src={`/icons/${i}`} alt={i} className='size-full' loading={"lazy"} decoding={"async"}/>
               </div>
             ))
