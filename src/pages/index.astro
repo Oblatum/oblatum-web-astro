@@ -22,6 +22,14 @@ const colors = [
 const randomColors = colors.sort(() => Math.random() - 0.5).slice(0, 8);
 ---
 
+<style lang="scss">
+  .poster {
+    h1 {
+      --uno: text-yellow;
+    }
+  }
+</style>
+
 <Layout title="首页">
     <div class="poster grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
       <div class="contents">
@@ -29,6 +37,7 @@ const randomColors = colors.sort(() => Math.random() - 0.5).slice(0, 8);
           <h1
             class="text-3xl text-[rgba(var(--oblatum-color-primary))] font-600 line-height-loose"
           >
+          <span class="i-oblatum-blue inline-block"></span>
             经典的
           </h1>
           <h1 class="text-3xl font-600 line-height-loose">不规则质感设计</h1>

@@ -9,6 +9,6 @@
 
 .poster{
     h1{
-        @apply text-3xl font-600 line-height-loose;
+        --uno: text-3xl font-600 line-height-loose text-red;
     }
 }
