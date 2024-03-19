@@ -18,4 +18,7 @@ export default defineConfig({
     transformerDirectives(),
     transformerCompileClass(),
   ],
+  shortcuts: [{
+    'poster-h1': 'text-3xl font-600 line-height-loose'
+  }]
 })

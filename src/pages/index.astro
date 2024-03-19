@@ -3,6 +3,7 @@ import Layout from "~/layouts/layout.astro";
 import { MdRipple } from "@material/web/ripple/ripple";
 import { Image } from "astro:assets";
 import { MdTextButton } from "@material/web/button/text-button"
+// import '~/styles/base.scss';
 
 const colors = [
   "ff6002",
@@ -20,9 +21,7 @@ const colors = [
 // 在 colors 中随机不连续的取出 8 个颜色，每次取到的都不同
 const randomColors = colors.sort(() => Math.random() - 0.5).slice(0, 8);
 ---
-<style lang="scss">
-  @import url('/src/styles/base.scss');
-</style>
+
 <Layout title="首页">
     <div class="poster grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
       <div class="contents">
