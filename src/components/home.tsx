@@ -1,33 +1,17 @@
-import { useEffect, useState } from 'react';
 import MdRipple from '~/components/ui/md-ripple'
 
-export function Home () {
-  const colors = [
-    "ff6002",
-    "32adfe",
-    "b693fd",
-    "00c562",
-    "f04e42",
-    "7dbdbc",
-    "ff4455",
-    "fc7694",
-    "ffd705",
-    "c11d22",
-  ];
+interface HomeProps {
+  colors: string[]
+  weatherIcons: string[]
+}
 
-  // 在 colors 中随机不连续的取出 8 个颜色，每次取到的都不同
-  const [randomColors, setRandomColors] = useState<string[]>([]);
-
-  useEffect(() => {
-    setRandomColors(()=>colors.sort(() => Math.random() - 0.5).slice(0, 8));
-  }, []);
-
+export function Home({ colors, weatherIcons }: HomeProps) {
   return (
     <div className=" grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
       <div className="contents">
         <div className="col-span-full">
-          <h1 className="text-[rgba(var(--oblatum-color-primary))] poster-h1">
-            <span className="i-oblatum-blue inline-block"/>经典的
+          <h1 className="text-[rgba(var(--oblatum-color-primary))] poster-h1 flex">
+            <span className="i-oblatum-blue inline-block self-center mr1" />经典的
           </h1>
           <h1 className='poster-h1'>不规则质感设计</h1>
           <p className='poster-p'>
@@ -38,9 +22,9 @@ export function Home () {
           className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm md:(grid-cols-6)"
         ><MdRipple />
           {
-            ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png'].map((i)=>(
-              <div key={i} className="mx-auto size-16 md:(size-24)">
-                <img src={`/icons/${i}`} alt={i} className='size-full' loading={"lazy"} decoding={"async"}/>
+            weatherIcons.map((i) => (
+              <div key={i} className="mx-auto size-16 md:(size-24) select-none">
+                <img src={`/icons/${i}`} alt={i} className='size-full' loading={"lazy"} decoding={"async"} />
               </div>
             ))
           }
@@ -52,22 +36,7 @@ export function Home () {
           <h1 className='poster-h1'>颜色优调</h1>
           <p className='poster-p'>如糖果般甜</p>
         </div>
-
-        <div
-          className="grid col-span-full grid-cols-4 my-4 grow justify-items-center gap-8 md:(col-span-2 mt-24)"
-        >
-          {
-            randomColors.map((c) => (
-              <span
-                key={c}
-                className={`size-14 md:(size-18) rounded-50 shadow-md relative`}
-                style={{ "backgroundColor": `#${c}` }}
-              >
-                <MdRipple />
-              </span>
-            ))
-          }
-        </div>
+        <RandomColor colors={colors} />
       </div>
 
       <div className="contents">
@@ -84,14 +53,39 @@ export function Home () {
         </div>
         <div className="grid col-span-full grid-cols-3 my-4 justify-items-center gap-6 md:(col-span-2 mt-24)">
           {
-            ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png'].map((i)=>(
-              <div key={i} className="mx-auto size-16 md:(size-24)">
-                <img src={`/icons/${i}`} alt={i} className='size-full' loading={"lazy"} decoding={"async"}/>
+            weatherIcons.map((i) => (
+              <div key={i} className="mx-auto size-16 md:(size-24) select-none">
+                <img src={`/icons/${i}`} alt={i} className='size-full' loading={"lazy"} decoding={"async"} />
               </div>
             ))
           }
         </div>
       </div>
+    </div>
+  )
+}
+
+
+interface RandomColorProps {
+  colors: string[]
+}
+
+function RandomColor({ colors }: RandomColorProps) {
+  return (
+    <div
+      className="grid col-span-full grid-cols-4 my-4 grow justify-items-center gap-8 md:(col-span-2 mt-24)"
+    >
+      {
+        colors.map((c) => (
+          <span
+            key={c}
+            className={`size-14 md:(size-18) rounded-50 shadow-md relative`}
+            style={{ "backgroundColor": `#${c}` }}
+          >
+            <MdRipple />
+          </span>
+        ))
+      }
     </div>
   )
 }
