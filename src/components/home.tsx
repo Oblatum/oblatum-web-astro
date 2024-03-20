@@ -1,4 +1,5 @@
-import MdRipple from '~/components/ui/md-ripple'
+import {Ripple} from '~/components/ui/md-ripple'
+import { SecondaryTab, Tabs } from '~/components/ui/md-tabs'
 
 interface HomeProps {
   colors: string[]
@@ -20,7 +21,7 @@ export function Home({ colors, weatherIcons }: HomeProps) {
         </div>
         <div
           className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm md:(grid-cols-6)"
-        ><MdRipple />
+        ><Ripple />
           {
             weatherIcons.map((i) => (
               <div key={i} className="mx-auto size-16 md:(size-24) select-none">
@@ -60,6 +61,13 @@ export function Home({ colors, weatherIcons }: HomeProps) {
             ))
           }
         </div>
+        <div>
+          <Tabs onClick={(e)=>{console.log(e.target)}}>
+            <SecondaryTab data-value={1} key={'1'}>Secondary 1</SecondaryTab>
+            <SecondaryTab data-value={2} key={'2'}>Secondary 2</SecondaryTab>
+            <SecondaryTab data-value={3} key={'3'}>Secondary 3</SecondaryTab>
+          </Tabs>
+        </div>
       </div>
     </div>
   )
@@ -70,7 +78,7 @@ interface RandomColorProps {
   colors: string[]
 }
 
-function RandomColor({ colors }: RandomColorProps) {
+export function RandomColor({ colors }: RandomColorProps) {
   return (
     <div
       className="grid col-span-full grid-cols-4 my-4 grow justify-items-center gap-8 md:(col-span-2 mt-24)"
@@ -82,10 +90,23 @@ function RandomColor({ colors }: RandomColorProps) {
             className={`size-14 md:(size-18) rounded-50 shadow-md relative`}
             style={{ "backgroundColor": `#${c}` }}
           >
-            <MdRipple />
+            <Ripple />
           </span>
         ))
       }
+    </div>
+  )
+}
+
+interface IconPreviewProps {
+  children: React.ReactNode
+}
+
+export function IconPreview({ children }: IconPreviewProps) {
+  return (
+    <div className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm md:(grid-cols-6)">
+      <Ripple />
+      {children}
     </div>
   )
 }
