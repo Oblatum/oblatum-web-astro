@@ -1,18 +1,14 @@
 ---
 import Layout from "~/layouts/layout.astro";
 import {RandomColor, IconPreview} from '~/components/home';
-import { Ripple } from "~/components/ui/md-ripple";
 import { SecondaryTab, Tabs } from "~/components/ui/md-tabs";
-import Image from 'astro:assets'
 
 const colors: string[] = ["ff6002", "32adfe", "b693fd", "00c562", "f04e42", "7dbdbc", "ff4455", "fc7694", "ffd705", "c11d22"];
-const randomColor = (): string[] => colors.sort(() => Math.random() - 0.5).slice(0, 8)
 
 const weatherIcons: string[] = ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png']
 ---
 
 <Layout title="首页">
-  <!-- <Home colors={randomColor()} weatherIcons={weatherIcons} client:idle/> -->
   <div class="grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
     <div class="contents">
       <div class="col-span-full">
@@ -24,17 +20,6 @@ const weatherIcons: string[] = ['weather_1.png','weather_12.png','weather_19.png
           基于Material Design，淡化了原有的质感，视感更加的和谐。
         </p>
       </div>
-      <!-- <div
-        class="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm md:(grid-cols-6)"
-      ><Ripple />
-        {
-          weatherIcons.map((i) => (
-            <div class="mx-auto size-16 select-none md:(size-24)">
-              <img src={`/icons/${i}`} alt={i} class='size-full' loading={"lazy"} decoding={"async"} />
-            </div>
-          ))
-        }
-      </div> -->
       <IconPreview client:idle>
         <Fragment sort="icons">
           {
