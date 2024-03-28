@@ -1,9 +1,7 @@
 import { defineConfig } from 'astro/config';
 import UnoCSS from 'unocss/astro';
-import lit from "@astrojs/lit";
-import solidJs from "@astrojs/solid-js";
-
 import node from "@astrojs/node";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,8 +9,7 @@ export default defineConfig({
     UnoCSS({
       injectReset: true // or a path to the reset file
     }), 
-    lit(), 
-    solidJs()
+    react()
   ],
   output: "server",
   adapter: node({
