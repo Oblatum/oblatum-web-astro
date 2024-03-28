@@ -1,13 +1,18 @@
 ---
-import { MdTextButton } from "@material/web/button/text-button";
+import { IconButton } from "~/components/ui/md-button"
+import { Icon } from "~/components/ui/md-icon"
+import { Image } from "astro:assets";
 ---
 <div class="absolute left-0 top-0 z-1000 h-[4rem] w-full flex items-center gap-4 bg-white bg-op-20 px-6 py-4 backdrop-blur-3xl backdrop-saturate-150">
     
-    <img src="/public/icons/oblatum_3.png" alt="Oblatum Iconpack" class="size-8 rounded-md shadow-sm">
+    <span class="size-8 overflow-hidden rounded-md shadow-sm">
+        <Image src="/src/assets/imgs/oblatum_3.png" alt="Oblatum Iconpack" loading={'lazy'} decoding={"async"} width={256} height={256}/>
+    </span>
     <slot>
         <p class="flex flex-col tracking-[0.26rem] opacity-65">糯米纸图标包<span class="text-[12px] font-light tracking-widest opacity-45 -mt-1">Oblatum Iconpack</span></p>
     </slot>
     <div class="flex-grow"></div>
-    <MdTextButton client:visible>Text</MdTextButton>
-
+    <IconButton client:idle>
+        <Icon client:idle>menu</Icon>
+    </IconButton>
 </div>
