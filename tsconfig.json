@@ -4,7 +4,7 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": "E:/Coding/Astro/oblatum-web-astro",
+    "baseUrl": ".",
     "paths": {
       "~/*": [
         "src/*"
