@@ -2,8 +2,12 @@ import React from "react";
 import { createComponent } from "@lit/react";
 import { MdIcon } from "@material/web/icon/icon"
 
-export const Icon = createComponent({
+const BaseIcon = createComponent({
   tagName: 'md-icon',
   elementClass: MdIcon,
-  react: React
+  react: React,
 });
+
+export const Icon = ({ className = '', ...props }) => (
+  <BaseIcon className={`notranslate ${className}`} {...props} />
+);
