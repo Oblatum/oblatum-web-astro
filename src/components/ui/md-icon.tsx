@@ -8,6 +8,12 @@ const BaseIcon = createComponent({
   react: React,
 });
 
-export const Icon = ({ className = '', ...props }) => (
-  <BaseIcon className={`notranslate ${className}`} {...props} />
+interface IconProps {
+  children: React.ReactNode;
+  className?: string;
+  [key: string]: unknown;
+}
+
+export const Icon = ({children, className, ...props }:IconProps) => (
+  <BaseIcon className={`notranslate ${className}`} {...props} >{children}</BaseIcon>
 );

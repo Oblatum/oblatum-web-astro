@@ -20,6 +20,13 @@ const BaseListItem = createComponent({
       onClick: 'click',
     },
 });
-export const ListItem = ({ className = '', ...props }) => (
-    <BaseListItem className={`rounded-4 ${className}`} {...props} />
+
+interface ListItemProps {
+  children: React.ReactNode;
+  className?: string;
+  [key: string]: unknown;
+}
+
+export const ListItem = ({ children, className, ...props }:ListItemProps) => (
+  <BaseListItem className={`rounded-4 ${className}`} {...props} >{children}</BaseListItem>
 );

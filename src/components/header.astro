@@ -1,7 +1,7 @@
 ---
 import { IconButton } from "~/components/ui/md-button"
 import { Icon } from "~/components/ui/md-icon"
-import { List,ListItem } from "./ui/md-list";
+import { List,ListItem } from "~/components/ui/md-list";
 import { Image } from "astro:assets";
 ---
 <div class="absolute left-0 top-0 z-1000 h-[4rem] w-full flex items-center gap-4 bg-white bg-op-20 px-6 py-4 backdrop-blur-3xl backdrop-saturate-150">
@@ -16,7 +16,7 @@ import { Image } from "astro:assets";
     <List client:idle className="absolute left-0 top-0 w-full border-b-1 border-b-[var(--md-sys-color-surface-variant)] px-8 pb-8 pt-4rem shadow-xl">
         <ListItem client:idle type="button">
             首页
-            <Icon client:idle slot="start">home</Icon>
+            <Icon client:idle>home</Icon>
         </ListItem>
         <ListItem client:idle type="button">
             首页
