@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IconButton,TextButton } from "~/components/ui/md-button"
 import { Icon } from "~/components/ui/md-icon"
 import { List,ListItem } from "~/components/ui/md-list";
@@ -17,10 +18,19 @@ const HeaderMenuConfig = [
     }
 ]
 
+// 折叠菜单状态
+const [headerFoldMenuState,setHeaderFoldMenuState] = useState(false)
+
+// 折叠菜单按钮点击事件
+const HeaderFoldMenuOnClick = () => {
+
+}
+
 export function HeaderMenu() {
     return (
         <>
-            <List className="absolute left-0 top-0 w-full border-b-1 border-b-[var(--md-sys-color-surface-variant)] px-8 pb-8 pt-4rem shadow-xl md:hidden">
+            {/* 移动端菜单 */}
+            <List className={`absolute left-0 top-0 w-full border-b-1 border-b-[var(--md-sys-color-surface-variant)] px-8 pb-8 pt-4rem shadow-xl md:hidden ${headerFoldMenuState ? 'actived':''}`}>
                 {
                     HeaderMenuConfig.map((item) => (
                         <ListItem type="button">
@@ -32,10 +42,12 @@ export function HeaderMenu() {
                 
             </List>
 
-            <IconButton className="md:hidden">
+            {/* 折叠菜单按钮 */}
+            <IconButton className="md:hidden" onClick={()=>{HeaderFoldMenuOnClick()}}>
                 <Icon>menu</Icon>
             </IconButton>
 
+            {/* PC端菜单 */}
             <div className="hidden md:flex items-center gap-4">
                 {
                     HeaderMenuConfig.map((item) => (
