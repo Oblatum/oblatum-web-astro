@@ -18,22 +18,28 @@ const HeaderMenuConfig = [
     }
 ]
 
-// 折叠菜单状态
-const [headerFoldMenuState,setHeaderFoldMenuState] = useState(false)
 
-// 折叠菜单按钮点击事件
-const HeaderFoldMenuOnClick = () => {
-
-}
 
 export function HeaderMenu() {
+    // 折叠菜单状态
+    const [headerFoldMenuState,setHeaderFoldMenuState] = useState(false)
+
+    // 折叠菜单按钮点击事件
+    const HeaderFoldMenuOnClick = () => {
+        setHeaderFoldMenuState(!headerFoldMenuState)
+    }
+
+    //活动菜单
+    const [activeMenu,setActiveMenu] = useState(HeaderMenuConfig[0].name)
+
+
     return (
         <>
             {/* 移动端菜单 */}
-            <List className={`absolute left-0 top-0 w-full border-b-1 border-b-[var(--md-sys-color-surface-variant)] px-8 pb-8 pt-4rem shadow-xl md:hidden ${headerFoldMenuState ? 'actived':''}`}>
+            <List className={`absolute left-0 top-0 w-full border-b-1 translate-y-[-115%] transition-transform transition-duration-300 transition-ease-out border-b-[var(--md-sys-color-surface-variant)] px-8 pb-8 pt-4rem shadow-xl md:hidden ${headerFoldMenuState ? 'translate-y-0':''}`}>
                 {
                     HeaderMenuConfig.map((item) => (
-                        <ListItem type="button">
+                        <ListItem type="button" className={`${activeMenu===item.name} ? '':''`}>
                             {item.name}
                             <Icon slot="start">{item.icon}</Icon>
                         </ListItem>
