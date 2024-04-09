@@ -39,7 +39,7 @@ export function HeaderMenu() {
             <List className={`absolute left-0 top-0 w-full border-b-1 translate-y-[-115%] transition-transform transition-duration-300 transition-ease-out border-b-[var(--md-sys-color-surface-variant)] px-8 pb-8 pt-4rem shadow-xl md:hidden ${headerFoldMenuState ? 'translate-y-0':''}`}>
                 {
                     HeaderMenuConfig.map((item) => (
-                        <ListItem type="button" className={`${activeMenu===item.name} ? '':''`}>
+                        <ListItem type="button" className={`${activeMenu===item.name ? 'bg-[var(--md-sys-color-primary-container)]':''}`}>
                             {item.name}
                             <Icon slot="start">{item.icon}</Icon>
                         </ListItem>
