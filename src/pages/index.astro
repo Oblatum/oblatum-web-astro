@@ -6,9 +6,11 @@ import { SecondaryTab, Tabs } from "~/components/ui/md-tabs";
 const colors: string[] = ["ff6002", "32adfe", "b693fd", "00c562", "f04e42", "7dbdbc", "ff4455", "fc7694", "ffd705", "c11d22"];
 
 const weatherIcons: string[] = ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png']
+
+const active:number = 0;
 ---
 
-<Layout title="首页">
+<Layout active={active}>
   <div class="grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
     <div class="contents">
       <div class="col-span-full">

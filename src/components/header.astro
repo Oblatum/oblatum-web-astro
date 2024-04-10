@@ -1,6 +1,11 @@
 ---
 import  { HeaderMenu } from "~/components/header.tsx";
 import { Image } from "astro:assets";
+interface Props {
+    active:number;
+}
+
+const { active } = Astro.props;
 ---
 <div class="absolute left-0 top-0 z-1000 h-[4rem] w-full flex items-center gap-4 bg-op-0 px-6 py-4 backdrop-blur-3xl backdrop-saturate-150">
     
@@ -11,6 +16,6 @@ import { Image } from "astro:assets";
         <p class="flex flex-col tracking-[0.26rem] opacity-65">糯米纸图标包<span class="text-[12px] font-light tracking-widest opacity-45 -mt-1">Oblatum Iconpack</span></p>
     </slot>
     <div class="flex-grow"></div>
-    <HeaderMenu client:idle/>
+    <HeaderMenu client:idle active={active} />
     
 </div>
