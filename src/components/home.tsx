@@ -20,7 +20,7 @@ export function Home({ colors, weatherIcons }: HomeProps) {
           </p>
         </div>
         <div
-          className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm md:(grid-cols-6)"
+          className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm"
         ><Ripple />
           {
             weatherIcons.map((i) => (
@@ -104,7 +104,7 @@ interface IconPreviewProps {
 
 export function IconPreview({ children }: IconPreviewProps) {
   return (
-    <div className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm md:(grid-cols-6)">
+    <div className="relative grid col-span-full grid-cols-3 cursor-pointer gap-6 mb-32 rounded-4 from-[rgba(41,170,224,0.1)] to-[rgba(108,128,208,0.2)] bg-gradient-to-rb p-4 shadow-sm">
       <Ripple />
       {children}
     </div>

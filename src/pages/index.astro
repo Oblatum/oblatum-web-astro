@@ -8,12 +8,14 @@ const colors: string[] = ["ff6002", "32adfe", "b693fd", "00c562", "f04e42", "7db
 const weatherIcons: string[] = ['weather_1.png','weather_12.png','weather_19.png','weather_34.png','weather_37.png','weather_44.png']
 
 const active:number = 0;
+
 ---
 
 <Layout active={active}>
-  <div class="grid grid-flow-row-dense grid-cols-3 mx-2 mb-4 mt-36 gap-8">
+  <div class="dark grid grid-flow-row-dense grid-cols-3 mx-2 my-4 gap-16 overflow-hidden">
     <div class="contents">
       <div class="col-span-full">
+        <div class="h-[30dvh] w-full md:h-[40dvh]"></div>
         <h1 class="flex poster-h1 text-[rgba(var(--oblatum-color-primary))]">
           <span class="i-oblatum-blue mr1 inline-block self-center" />经典的
         </h1>
@@ -33,9 +35,12 @@ const active:number = 0;
           }
         </Fragment>
       </IconPreview>
+      <div class="absolute left-0 top-0 h-full w-full overflow-hidden -z-1">
+        <div class="absolute bottom-0 left-1/2 left-1/2 h-[max(140dvw,140dvh)] w-[max(140dvw,140dvh)] translate-y-2/5 -translate-x-1/2 md:translate-y-3/5" style="background:radial-gradient(at center, #92FFFF, #29ABE2, #033144,var(--md-sys-color-background), var(--md-sys-color-background));"></div>
+      </div>
     </div>
 
-    <div class="contents">
+    <div class="contents bg-[var(--md-sys-color-background)]">
       <div class="col-span-full flex flex-col items-start justify-end md:(col-span-1 col-start-3 items-end)">
         <h1 class='poster-h1'>颜色优调</h1>
         <p class='poster-p'>如糖果般甜</p>

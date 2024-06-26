@@ -7,13 +7,13 @@ interface Props {
 
 const { active } = Astro.props;
 ---
-<div class="absolute left-0 top-0 z-1000 h-[4rem] w-full flex items-center gap-4 bg-op-0 px-6 py-4 backdrop-blur-3xl backdrop-saturate-150">
+<div class="before:content absolute left-0 top-0 z-1000 h-[4rem] w-full flex items-center gap-4 bg-op-0 px-6 py-4 backdrop-blur-3xl backdrop-saturate-150 before:(absolute left-0 top-0 block h-full w-full bg-[var(--md-sys-color-background)] op-40)">
     
     <span class="size-8 overflow-hidden rounded-md shadow-sm">
         <Image src="/src/assets/imgs/oblatum_3.png" alt="Oblatum Iconpack" loading={'lazy'} decoding={"async"} width={256} height={256}/>
     </span>
     <slot>
-        <p class="flex flex-col tracking-[0.26rem] opacity-65">糯米纸图标包<span class="text-[12px] font-light tracking-widest opacity-45 -mt-1">Oblatum Iconpack</span></p>
+        <p class="flex flex-col text-[var(--md-sys-color-on-background)] tracking-[0.26rem]">糯米纸图标包<span class="text-[12px] text-[var(--md-sys-color-on-background)] font-light tracking-widest opacity-65 -mt-1">Oblatum Iconpack</span></p>
     </slot>
     <div class="flex-grow"></div>
     <HeaderMenu client:idle active={active} />

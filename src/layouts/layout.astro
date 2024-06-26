@@ -31,7 +31,7 @@ const title:string = HeaderMenuConfig[active].name;
 			console.log(JSON.stringify(theme, null, 2));
 
 			// Check if the user has dark mode turned on
-			const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches || document.querySelector('.dark')!==null;
 
 			// Apply the theme to the body by updating custom properties for material tokens
 			applyTheme(theme, {target: document.body, dark: systemDark});
@@ -39,7 +39,7 @@ const title:string = HeaderMenuConfig[active].name;
 	</head>
 	<body class="relative bg-[var(--md-sys-color-background)]">
 		<Header client:idle active={active} />
-		<div class="relative h-100dvh overflow-y-auto p-8">
+		<div class="relative h-100dvh overflow-y-auto px-8 py-8 lg:px-60 md:px-40">
 			<slot />
 		</div>
 	</body>
