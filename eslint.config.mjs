@@ -1,16 +1,14 @@
-import unocss from '@unocss/eslint-config/flat'
-import { FlatCompat } from '@eslint/eslintrc'
-import eslintPluginAstro from 'eslint-plugin-astro';
+import antfu from '@antfu/eslint-config'
 
-const compat = new FlatCompat()
-
-export default [
-  unocss,
-  ...eslintPluginAstro.configs.recommended,
-  {
-    rules: {
-      // override/add rules settings here, such as:
-      // "astro/no-set-html-directive": "error"
-    }
-  }
-]
+export default antfu({
+  unocss: true,
+  typescript: true,
+  astro: true,
+  react: true,
+  // vue: true,
+  stylistic: {
+    indent: 2, // 4, or 'tab'
+    quotes: 'single', // or 'double'
+    semi: false,
+  },
+})

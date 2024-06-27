@@ -1,29 +1,32 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import Header from "~/components/header.astro";
+// import { HeaderMenuConfig } from "~/components/states/router";
+
 interface Props {
-	active:number;
+  active: number;
 }
 
 const { active } = Astro.props;
-import Header from '~/components/header.astro';
-import { HeaderMenuConfig } from "~/components/states/router";
-import { ViewTransitions } from 'astro:transitions';
 
-const title:string = HeaderMenuConfig[active].name;
+// const title: string = HeaderMenuConfig[active].name;
 ---
 
 <!doctype html>
 <html lang="en" transition:animate="none">
-	<head>
-		<ViewTransitions />
-	</head>
-	<body class="relative bg-[var(--md-sys-color-background)]">
-		<Header transition:persist active={active} />
-		<main class="relative h-100dvh overflow-y-auto px-8 py-8 lg:px-60 md:px-40" transition:animate="slide">
-			<slot />
-		</main>
-	</body>
+  <head>
+    <ViewTransitions />
+  </head>
+  <body class="relative bg-[var(--md-sys-color-background)]">
+    <Header transition:persist active={active} />
+    <main
+      class="relative h-100dvh overflow-y-auto px-8 py-8 lg:px-60 md:px-40"
+      transition:animate="slide"
+    >
+      <slot />
+    </main>
+    <style is:global>
+      @import url("/src/styles/global.css");
+    </style>
+  </body>
 </html>
-
-<style is:global>
-@import url('/src/styles/global.css');
-</style>

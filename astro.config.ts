@@ -1,23 +1,23 @@
-import { defineConfig } from 'astro/config';
-import UnoCSS from 'unocss/astro';
-import node from "@astrojs/node";
-import react from "@astrojs/react";
+import { defineConfig } from 'astro/config'
+import UnoCSS from 'unocss/astro'
+import node from '@astrojs/node'
+import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     UnoCSS({
-      injectReset: true // or a path to the reset file
-    }), 
-    react()
+      injectReset: true, // or a path to the reset file
+    }),
+    react(),
   ],
-  output: "server",
+  output: 'server',
   adapter: node({
-    mode: "standalone"
+    mode: 'standalone',
   }),
   vite: {
     css: {
-      transformer: "lightningcss",
+      transformer: 'lightningcss',
     },
-  }
-});
+  },
+})
