@@ -12,9 +12,21 @@
   --oblatum-color-primary: 41, 170, 224;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--md-sys-color-on-background);
 }
-a,p,span {
+
+a,
+p,
+span {
   color: var(--md-sys-color-on-surface-variant);
+}
+
+html {
+  overflow-y: scroll;
 }

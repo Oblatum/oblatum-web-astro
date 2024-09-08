@@ -1,82 +1,40 @@
 ---
-import Layout from '~/layouts/layout.astro'
-import { IconPreview, RandomColor } from '~/components/home'
-import { SecondaryTab, Tabs } from '~/components/ui/md-tabs'
-
-
-const colors: string[] = ['ff6002', '32adfe', 'b693fd', '00c562', 'f04e42', '7dbdbc', 'ff4455', 'fc7694', 'ffd705', 'c11d22']
-
-const weatherIcons: string[] = ['weather_1.png', 'weather_12.png', 'weather_19.png', 'weather_34.png', 'weather_37.png', 'weather_44.png']
+import Layout from "~/layouts/layout.astro";
+import Header from "~/components/header.astro";
+import { HomeCard, NewVersonCard } from "~/components/home-card";
+import IndexPage1 from "~/components/page_components/index-page-1.astro";
+import IndexPageFoot from "~/components/page_components/index-page-foot.astro";
+import IndexPage2 from "~/components/page_components/index-page-2.astro";
 
 const active: number = 0;
-
 ---
 
-<Layout active={active}>
-  <div class="dark grid grid-flow-row-dense grid-cols-3 mx-2 my-4 gap-16 overflow-hidden">
-    <div class="contents">
-      <div class="col-span-full">
-        <div class="h-[30dvh] w-full md:h-[40dvh]"></div>
-        <h1 class="flex poster-h1 text-[rgba(var(--oblatum-color-primary))]">
-          <span class="i-oblatum-blue mr1 inline-block self-center" />经典的
-        </h1>
-        <h1 class="poster-h1">不规则质感设计</h1>
-        <p class="poster-p">
-          基于Material Design，淡化了原有的质感，视感更加的和谐。
-        </p>
-      </div>
-      <IconPreview client:idle>
-        <Fragment sort="icons">
-          {
-            weatherIcons.map(i => (
-              <div class="mx-auto size-16 md:(size-24)">
-                <img src=`/icons/${i}` alt={i} width={200} height={200} loading="lazy" decoding="async" />
-              </div>
-            ))
-          }
-        </Fragment>
-      </IconPreview>
-      <div class="absolute left-0 top-0 h-full w-full overflow-hidden -z-1">
-        <div class="absolute bottom-0 left-1/2 left-1/2 h-[max(140dvw,140dvh)] w-[max(140dvw,140dvh)] translate-y-2/5 -translate-x-1/2 md:translate-y-3/5" style="background:radial-gradient(at center, #92FFFF, #29ABE2, #033144,var(--md-sys-color-background), var(--md-sys-color-background));"></div>
-      </div>
-    </div>
-
-    <div class="contents bg-[var(--md-sys-color-background)]">
-      <div class="col-span-full flex flex-col items-start justify-end md:(col-span-1 col-start-3 items-end)">
-        <h1 class="poster-h1">颜色优调</h1>
-        <p class="poster-p">如糖果般甜</p>
-      </div>
-      <RandomColor colors={colors} client:idle />
-    </div>
-
-    <div class="contents">
-      <div class="col-span-1 col-span-full flex flex-col md:(col-span-1 justify-end)">
-        <h1
-          class="poster-h1 text-[rgba(var(--oblatum-color-primary))]"
+<Layout active={active} dark={true}>
+  <script></script>
+  <Header />
+  <div class="relative min-h-100dvh w-full flex flex-col items-center">
+    <div class="absolute top-0 h-full w-full">
+      <div
+        class="sticky left-0 top-0 h-100dvh w-full overflow-hidden bg-[var(--md-sys-color-background)]"
+      >
+        <div
+          class="absolute bottom-0 left-1/2 left-1/2 h-[max(140dvw,140dvh)] w-[max(140dvw,140dvh)] translate-y-2/5 -translate-x-1/2 md:translate-y-3/5"
+          style="background:radial-gradient(at center, #92FFFF, #29ABE2, #033144,var(--md-sys-color-background), var(--md-sys-color-background));"
         >
-          天气
-        </h1>
-        <h1 class="poster-h1">图标扩展</h1>
-        <p class="poster-p">
-          支持几何天气图标扩展和Chronus图标包。
-        </p>
-      </div>
-      <div class="grid col-span-full grid-cols-3 my-4 justify-items-center gap-6 md:(col-span-2 mt-24)">
-        {
-          weatherIcons.map(i => (
-            <div class="mx-auto size-16 select-none md:(size-24)">
-              <img src={`/icons/${i}`} alt={i} class="size-full" loading="lazy" decoding="async" />
-            </div>
-          ))
-        }
-      </div>
-      <div>
-        <Tabs onClick={() => { }} client:idle>
-          <SecondaryTab data-value={1} key="1">Secondary 1</SecondaryTab>
-          <SecondaryTab data-value={2} key="2">Secondary 2</SecondaryTab>
-          <SecondaryTab data-value={3} key="3">Secondary 3</SecondaryTab>
-        </Tabs>
+        </div>
       </div>
     </div>
+    <div class="relative w-full px-12 md:(max-w-1000px min-w-550px)">
+      <IndexPage1 />
+      <IndexPage2 />
+      <IndexPageFoot />
+    </div>
+  </div>
+  <div class="grid w-full gap-12 px-8 py-12 md:grid-cols-2 md:p-40">
+    <NewVersonCard client:idle />
+    <HomeCard />
+    <HomeCard />
+    <HomeCard />
+    <HomeCard />
   </div>
 </Layout>

@@ -1,18 +1,34 @@
 ---
 import { Image } from "astro:assets";
-import { HeaderMenu } from "~/components/header.tsx";
+// import { HeaderMenu } from "~/components/header.tsx";
 
-interface Props {
-  active: number;
-}
+// interface Props {
+//   active: number;
+// }
 
-const { active } = Astro.props;
+// const { active } = Astro.props;
 ---
 
 <div
-  class="before:content absolute left-0 top-0 z-1000 h-[4rem] w-full flex items-center gap-4 bg-op-0 px-6 py-4 backdrop-blur-3xl backdrop-saturate-150 before:(absolute left-0 top-0 block h-full w-full bg-[var(--md-sys-color-background)] op-40)"
+  class="fixed left-0 top-0 z-9999 h-[4rem] w-full flex items-center gap-2 bg-op-0 px-4 py-4 backdrop-blur-xl backdrop-saturate-180 before:(absolute left-0 top-0 block h-full w-full bg-[var(--md-sys-color-background)] op-40 content-[''] -z-1)"
 >
-  <span class="size-8 overflow-hidden rounded-md shadow-sm">
+  <div class="flex-grow"></div>
+  <slot>
+    <div class="flex flex-col">
+      <p
+        class="pt-1 text-[13px] text-[var(--md-sys-color-on-background)] font-bold tracking-[0.14rem] op-70"
+      >
+        Oblatum 图标
+      </p>
+      <p
+        class="transform-origin-lt transform-scale-93 text-[10px] text-[var(--md-sys-color-on-background)] font-light tracking-[0.3rem] opacity-30 -mt-1"
+      >
+        oblatum.art
+      </p>
+    </div>
+  </slot>
+
+  <span class="size-8 overflow-hidden rounded-xl shadow-sm">
     <Image
       src="/src/assets/imgs/oblatum_3.png"
       alt="Oblatum Iconpack"
@@ -22,15 +38,4 @@ const { active } = Astro.props;
       height={256}
     />
   </span>
-  <slot>
-    <p
-      class="flex flex-col text-[var(--md-sys-color-on-background)] tracking-[0.26rem]"
-    >
-      糯米纸图标包<span
-        class="text-[12px] text-[var(--md-sys-color-on-background)] font-light tracking-widest opacity-65 -mt-1"
-        >Oblatum Iconpack</span>
-    </p>
-  </slot>
-  <div class="flex-grow"></div>
-  <HeaderMenu client:idle active={active} />
 </div>

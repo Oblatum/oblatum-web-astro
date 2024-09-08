@@ -1,0 +1,27 @@
+---
+import { IconPreview } from '~/components/home'
+
+const weatherIcons: string[] = ['weather_1.png', 'weather_12.png', 'weather_19.png', 'weather_34.png', 'weather_37.png', 'weather_44.png', 'weather_12.png', 'weather_19.png', 'weather_34.png']
+---
+
+<div class="min-h-[100dvh] flex flex-col">
+  <div class="flex-grow"></div>
+  <div class="pb-16 md:pb-24">
+    <h1 class="flex poster-h1 text-[rgba(var(--oblatum-color-primary))]">
+      <span class="i-oblatum-blue mr1 inline-block self-center"></span>经典的
+    </h1>
+    <h1 class="poster-h1">不规则质感设计</h1>
+    <p class="mb-12 poster-p">
+      基于Material Design，淡化了原有的质感，视感更加的和谐。
+    </p>
+    <IconPreview client:idle>
+      {
+        weatherIcons.map(i => (
+          <div class="mx-auto size-16 md:(size-24)">
+            <img src=`/icons/${i}` alt={i} width={200} height={200} loading="lazy" decoding="async" />
+          </div>
+        ))
+      }
+    </IconPreview>
+  </div>
+</div>

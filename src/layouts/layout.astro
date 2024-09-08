@@ -1,19 +1,21 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import Header from "~/components/header.astro";
+// import Header from "~/components/header.astro";
+
 import { HeaderMenuConfig } from "~/components/states/router";
 
 interface Props {
   active: number;
+  dark?: boolean;
 }
 
-const { active } = Astro.props;
+const { active, dark = false } = Astro.props;
 
 const title: string = HeaderMenuConfig[active].name;
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
+<html lang="en" transition:animate="none" class:list={[{ dark }]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -47,18 +49,15 @@ const title: string = HeaderMenuConfig[active].name;
       const systemDark =
         window.matchMedia("(prefers-color-scheme: dark)").matches ||
         document.querySelector(".dark") !== null;
-
       // Apply the theme to the body by updating custom properties for material tokens
       applyTheme(theme, { target: document.body, dark: systemDark });
     </script>
-    <ViewTransitions />
   </head>
   <body class="relative bg-[var(--md-sys-color-background)]">
-    <Header transition:persist active={active} />
-    <main
-      class="relative h-100dvh overflow-y-auto px-8 py-8 lg:px-60 md:px-40"
-      transition:animate="slide"
-    >
+    <!-- <Header transition:persist client:load active={active} /> -->
+
+    <ViewTransitions />
+    <main class="relative" transition:animate="slide">
       <slot />
     </main>
     <style is:global>
