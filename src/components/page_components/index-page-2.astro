@@ -1,53 +1,56 @@
 ---
 import { Image } from "astro:assets";
-import { FilledButton } from "../ui/md-button";
 ---
 
-<div class="mt-32 flex flex-col md:(flex-row)">
-  <div>
-    <h1 class="flex-grow poster-h1">基于 Blueprint 开发</h1>
-    <FilledButton className="mt-2">去了解</FilledButton>
-  </div>
-  <div class="flex-grow"></div>
-  <Image
-    src="/src/assets/imgs/blueprint_logo.png"
-    alt="blueprint_logo"
-    loading="lazy"
-    decoding="async"
-    width={192}
-    height={192}
-    class="my-8 self-center"
-  />
-  <div
-    class="blueprint_descriptions flex flex-col gap-2 rounded-4 bg-dark bg-op-20 p-4 [&>p]:(md:poster-p text-[var(--md-sys-color-on-background)] before:content-['·']) backdrop-saturate-180 md:(ml-8 bg-op-0 backdrop-saturate-100)"
-  >
-    <p>Material Design 仪表板</p>
-    <p>许可证检查器</p>
-    <p>支持超20个启动器</p>
-    <p>捐赠功能</p>
-    <p>支持 OneSignal 通知</p>
-    <p>兼容 Android 5.0 及以上版本</p>
-    <p>等...</p>
+<div class="oblatum_icon_preview_animation relative mt-40">
+  <div class="relative mx-auto w-[max-content] md:m-0">
+    <Image
+      src="/src/assets/svgs/mojitestback.svg"
+      alt="mojitestback"
+      loading="lazy"
+      decoding="async"
+      width={192}
+      height={192}
+      class="relative size-48"
+    />
+    <Image
+      src="/src/assets/svgs/mojitestobl.svg"
+      alt="mojitestobl"
+      loading="lazy"
+      decoding="async"
+      width={192}
+      height={192}
+      class="absolute left-0 top-0 size-48"
+    />
+    <Image
+      src="/src/assets/svgs/mojitestfore.svg"
+      alt="mojitestfore"
+      loading="lazy"
+      decoding="async"
+      width={192}
+      height={192}
+      class="absolute left-0 top-0 size-48"
+    />
   </div>
 </div>
 <script>
   import { gsap } from "gsap";
   import { observeAndAnimateForList } from "../../tools/animation";
 
-  const p_box = document.querySelector(".blueprint_descriptions");
-  const paragraphs = p_box?.querySelectorAll("p");
+  const img_box = document.querySelector(".oblatum_icon_preview_animation");
+  const imgs = img_box?.querySelectorAll("img");
 
-  function animateParagraph(paragraph: gsap.TweenTarget, index: number) {
-    gsap.from(paragraph, {
-      opacity: 0,
-      y: 20,
-      duration: 0.5,
-      delay: index * 0.3,
+  function animateImgs(imgs: gsap.TweenTarget, index: number) {
+    gsap.to(imgs, {
+      duration: 10,
+      transformOrigin: "left center",
+      transform: `skew(-15deg ,-5deg) scaleY(0.6) translate(-${index * 36}px , -${index * 96}px)`,
+      delay: 0.5,
       ease: "power4.out", // 使用 power4.out 缓动函数
     });
   }
 
-  if (p_box && paragraphs) {
-    observeAndAnimateForList(p_box, paragraphs, animateParagraph, true);
+  if (img_box && imgs) {
+    observeAndAnimateForList(img_box, imgs, animateImgs, true);
   }
 </script>

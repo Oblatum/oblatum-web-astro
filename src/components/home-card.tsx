@@ -4,11 +4,13 @@ import { FilledButton, TextButton } from './ui/md-button'
 interface baseProps {
     className?: string
     children?: ReactNode
+    title?: string
 }
 
-export function HomeCard({ className, children }: baseProps) {
+export function HomeCard({ className, children, title }: baseProps) {
     return (
         <div className={`${className} h-full w-full border-1 border-gray border-op-40 rounded-4 bg-white bg-op-05 p-6 md:p-8 [&>h1]:(font-bold text-op-40 text-white text-sm)`}>
+            {title && <h1>{title}</h1>}
             {children}
         </div>
     )
@@ -16,8 +18,7 @@ export function HomeCard({ className, children }: baseProps) {
 
 export function NewVersonCard() {
     return (
-        <HomeCard className="col-span-full">
-            <h1>新版本</h1>
+        <HomeCard className="col-span-full" title="新版本">
             <div className="mt-8 flex flex-col gap-4 md:block">
                 <h1 className="text-3xl font-bold md:mb-4">
                     V3.0.24.8.28

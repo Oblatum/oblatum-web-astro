@@ -5,6 +5,8 @@ import { HomeCard, NewVersonCard } from "~/components/home-card";
 import IndexPage1 from "~/components/page_components/index-page-1.astro";
 import IndexPageFoot from "~/components/page_components/index-page-foot.astro";
 import IndexPage2 from "~/components/page_components/index-page-2.astro";
+import IndexPage4 from "~/components/page_components/index-page-4.astro";
+import IndexPage5 from "~/components/page_components/index-page-5.astro";
 
 const active: number = 0;
 ---
@@ -12,29 +14,35 @@ const active: number = 0;
 <Layout active={active} dark={true}>
   <script></script>
   <Header />
-  <div class="relative min-h-100dvh w-full flex flex-col items-center">
-    <div class="absolute top-0 h-full w-full">
-      <div
-        class="sticky left-0 top-0 h-100dvh w-full overflow-hidden bg-[var(--md-sys-color-background)]"
-      >
+  <div>
+    <div class="relative min-h-100dvh w-full flex flex-col items-center">
+      <div class="absolute top-0 h-full w-full">
         <div
-          class="absolute bottom-0 left-1/2 left-1/2 h-[max(140dvw,140dvh)] w-[max(140dvw,140dvh)] translate-y-2/5 -translate-x-1/2 md:translate-y-3/5"
-          style="background:radial-gradient(at center, #92FFFF, #29ABE2, #033144,var(--md-sys-color-background), var(--md-sys-color-background));"
+          class="sticky left-0 top-0 h-100dvh w-full overflow-hidden bg-[var(--md-sys-color-background)]"
         >
+          <div
+            class="absolute bottom-0 left-1/2 left-1/2 h-[max(140dvw,140dvh)] w-[max(140dvw,140dvh)] translate-y-2/5 -translate-x-1/2 md:translate-y-3/5"
+            style="background:radial-gradient(at center, #92FFFF, #29ABE2, #033144,var(--md-sys-color-background), var(--md-sys-color-background));"
+          >
+          </div>
         </div>
       </div>
+      <div class="relative w-full px-12 md:(max-w-240 min-w-138)">
+        <IndexPage1 />
+        <IndexPage2 />
+        <IndexPage4 />
+        <IndexPage5 />
+        <IndexPageFoot />
+      </div>
     </div>
-    <div class="relative w-full px-12 md:(max-w-1000px min-w-550px)">
-      <IndexPage1 />
-      <IndexPage2 />
-      <IndexPageFoot />
+    <div
+      class="grid w-full gap-12 px-8 py-12 md:(grid-cols-2 mx-auto max-w-240)"
+    >
+      <NewVersonCard client:idle />
+      <HomeCard />
+      <HomeCard />
+      <HomeCard />
+      <HomeCard />
     </div>
-  </div>
-  <div class="grid w-full gap-12 px-8 py-12 md:grid-cols-2 md:p-40">
-    <NewVersonCard client:idle />
-    <HomeCard />
-    <HomeCard />
-    <HomeCard />
-    <HomeCard />
   </div>
 </Layout>

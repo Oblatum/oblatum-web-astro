@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import { FilledButton } from "../ui/md-button";
+---
+
+<div class="mt-32 flex flex-col md:(flex-row)">
+  <div>
+    <h1 class="flex-grow poster-h1">基于 Blueprint 开发</h1>
+    <p class="poster-p">免费、功能丰富、易于定制的安卓图标包仪表板。</p>
+    <FilledButton className="mt-2">去了解</FilledButton>
+  </div>
+  <div class="flex-grow"></div>
+  <Image
+    src="/src/assets/imgs/blueprint_logo.png"
+    alt="blueprint_logo"
+    loading="lazy"
+    decoding="async"
+    width={192}
+    height={192}
+    class="my-8 self-center"
+  />
+  <div
+    class="blueprint_descriptions flex flex-col gap-2 rounded-4 bg-dark bg-op-20 p-4 [&>p]:(md:poster-p text-[var(--md-sys-color-on-background)] before:content-['·']) backdrop-saturate-180 md:(ml-8 bg-op-0 backdrop-saturate-100)"
+  >
+    <p>Material Design 仪表板</p>
+    <p>许可证检查器</p>
+    <p>支持超20个启动器</p>
+    <p>捐赠功能</p>
+    <p>支持 OneSignal 通知</p>
+    <p>兼容 Android 5.0 及以上版本</p>
+    <p>等...</p>
+  </div>
+</div>
+<script>
+  import { gsap } from "gsap";
+  import { observeAndAnimateForList } from "../../tools/animation";
+
+  const p_box = document.querySelector(".blueprint_descriptions");
+  const paragraphs = p_box?.querySelectorAll("p");
+
+  function animateParagraph(paragraph: gsap.TweenTarget, index: number) {
+    gsap.from(paragraph, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      delay: index * 0.3,
+      ease: "power4.out", // 使用 power4.out 缓动函数
+    });
+  }
+
+  if (p_box && paragraphs) {
+    observeAndAnimateForList(p_box, paragraphs, animateParagraph, true);
+  }
+</script>
