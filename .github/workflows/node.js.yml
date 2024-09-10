@@ -23,7 +23,7 @@ jobs:
       - name: Build Docker image
         # 使用多阶段构建，只将最终的运行时依赖项包含在最终镜像中
         run: |
-          docker build -t oblatum_art_astro:latest -f Dockerfile.prod .
+          docker build -t oblatum_art_astro:latest -f Dockerfile .
           docker push oblatum_art_astro:latest
 
       - name: Save Docker image
