@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Save Docker Image
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  build-and-save:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -25,6 +25,12 @@ jobs:
 
       - name: Save Docker image
         run: docker save oblatum_art_astro:latest > oblatum_art_astro.tar
+
+      # 将镜像导出到Github actions的artifacts中
+      - name: Upload Docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: oblatum_art_astro
 
       # - name: Login to Docker registry
       #   uses: docker/login-action@v1
