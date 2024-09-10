@@ -1,10 +1,8 @@
-import type { gsap } from 'gsap'
-
 /**
  * 动画函数接口
  */
 interface AnimateFunction {
-    (target: gsap.TweenTarget, index: number): void
+    (target: any, index: number): void
 }
 
 /**
