@@ -21,10 +21,14 @@ jobs:
         run: npm install
 
       - name: Build Docker image
-        run: docker build -t oblatum_art_astro:latest .
+        # 使用多阶段构建，只将最终的运行时依赖项包含在最终镜像中
+        run: |
+          docker build -t oblatum_art_astro:latest -f Dockerfile.prod .
+          docker push oblatum_art_astro:latest
 
       - name: Save Docker image
-        run: docker save oblatum_art_astro:latest > oblatum_art_astro.tar
+        # 使用 --compress 选项压缩镜像
+        run: docker save --compress oblatum_art_astro:latest > oblatum_art_astro.tar
 
       - name: Upload Docker image
         uses: actions/upload-artifact@v2
