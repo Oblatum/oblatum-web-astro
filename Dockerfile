@@ -1,44 +1,15 @@
-# FROM node:lts AS base
-# WORKDIR /app
-# # 这里仅复制 package.json 和 package-lock.json，我们确保以下的 `-deps` 步骤与源代码无关。
-# # 因此，如果只有源代码发生变化，将会跳过 `-deps` 步骤。
-# COPY package.json package-lock.json ./
-# FROM base AS prod-deps
-# RUN npm install --omit=dev
-# FROM base AS build-deps
-# RUN npm install
-# FROM build-deps AS build
-# COPY . .
-# RUN npm run build
-# FROM base AS runtime
-# COPY --from=prod-deps /app/node_modules ./node_modules
-# COPY --from=build /app/dist ./dist
-# ENV HOST=0.0.0.0
-# ENV PORT=4321
-# EXPOSE 4321
-# CMD node ./dist/server/entry.mjs
-
-FROM node:alpine AS base
+FROM node:lts AS base
 WORKDIR /app
-
-# 仅复制 package.json 和 package-lock.json
+# 这里仅复制 package.json 和 package-lock.json，我们确保以下的 `-deps` 步骤与源代码无关。
+# 因此，如果只有源代码发生变化，将会跳过 `-deps` 步骤。
 COPY package.json package-lock.json ./
-
-# 使用缓存
 FROM base AS prod-deps
-RUN --mount=type=cache,target=/root/.npm,id=npm-cache \
-    npm install --omit=dev --cache-dir=/root/.npm
-
-# 使用缓存
+RUN npm install --omit=dev
 FROM base AS build-deps
-RUN --mount=type=cache,target=/root/.npm,id=npm-cache \
-    npm install --cache-dir=/root/.npm
-
+RUN npm install
 FROM build-deps AS build
 COPY . .
 RUN npm run build
-
-# 只复制 dist 目录
 FROM base AS runtime
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
