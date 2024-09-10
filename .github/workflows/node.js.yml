@@ -30,6 +30,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: oblatum_art_astro
+          path: ./releases/oblatum_art_astro.tar
 
       - name: Release Docker image
         uses: softprops/action-gh-release@v1
