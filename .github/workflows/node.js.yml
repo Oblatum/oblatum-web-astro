@@ -9,6 +9,9 @@ jobs:
   build-and-save:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Build Docker image
         # 使用多阶段构建，只将最终的运行时依赖项包含在最终镜像中
         run: |
