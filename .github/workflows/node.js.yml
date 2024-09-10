@@ -9,17 +9,6 @@ jobs:
   build-and-save:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-
-      - name: Install dependencies
-        run: npm install
-
       - name: Build Docker image
         # 使用多阶段构建，只将最终的运行时依赖项包含在最终镜像中
         run: |
@@ -28,8 +17,7 @@ jobs:
       # docker push pzhown/oblatum_art_astro:latest
 
       - name: Save Docker image
-        # 使用 --compress 选项压缩镜像
-        run: docker save --compress oblatum_art_astro:latest > oblatum_art_astro.tar
+        run: docker save oblatum_art_astro:latest > oblatum_art_astro.tar
 
       - name: Upload Docker image
         uses: actions/upload-artifact@v2
