@@ -1,20 +1,19 @@
-# 使用 Node.js 官方镜像作为基础镜像
-FROM node:18-alpine
-
-# 设置工作目录
+FROM node:lts AS base
 WORKDIR /app
-
-# 复制项目文件到容器中
-COPY package*.json ./
-
-# 安装项目依赖
+# 这里仅复制 package.json 和 package-lock.json，我们确保以下的 `-deps` 步骤与源代码无关。
+# 因此，如果只有源代码发生变化，将会跳过 `-deps` 步骤。
+COPY package.json package-lock.json ./
+FROM base AS prod-deps
+RUN npm install --omit=dev
+FROM base AS build-deps
 RUN npm install
-
-# 复制项目代码到容器中
+FROM build-deps AS build
 COPY . .
-
-# 暴露容器端口
-EXPOSE 3000
-
-# 运行启动命令
-CMD ["npm", "start"]
+RUN npm run build
+FROM base AS runtime
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+ENV HOST=0.0.0.0
+ENV PORT=4321
+EXPOSE 4321
+CMD node ./dist/server/entry.mjs
