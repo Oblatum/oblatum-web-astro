@@ -40,6 +40,7 @@ RUN npm run build
 
 # 只复制 dist 目录
 FROM base AS runtime
+COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 ENV HOST=0.0.0.0
 ENV PORT=4321
