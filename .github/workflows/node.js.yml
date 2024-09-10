@@ -24,7 +24,8 @@ jobs:
         # 使用多阶段构建，只将最终的运行时依赖项包含在最终镜像中
         run: |
           docker build -t oblatum_art_astro:latest -f Dockerfile .
-          docker push pzhown/oblatum_art_astro:latest
+
+      # docker push pzhown/oblatum_art_astro:latest
 
       - name: Save Docker image
         # 使用 --compress 选项压缩镜像
