@@ -26,11 +26,20 @@ jobs:
       - name: Save Docker image
         run: docker save oblatum_art_astro:latest > oblatum_art_astro.tar
 
-      # 将镜像导出到Github actions的artifacts中
       - name: Upload Docker image
         uses: actions/upload-artifact@v2
         with:
           name: oblatum_art_astro
+
+      - name: Release Docker image
+        uses: softprops/action-gh-release@v1
+        with:
+          files: oblatum_art_astro.tar
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: ${{ github.sha }}
+          body: ${{ github.sha }}
+          tag: ${{ github.sha }}
+          overwrite: true
 
       # - name: Login to Docker registry
       #   uses: docker/login-action@v1
