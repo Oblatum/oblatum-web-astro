@@ -49,7 +49,7 @@ jobs:
           echo "VERSION=${{ env.VERSION }}"
 
       - name: Build Docker image
-        run: docker build -t ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} -f Dockerfile .
+        run: docker build -t ghcr.io/pzhown/${{ env.PACKAGE_NAME }}:${{ env.VERSION }} -f Dockerfile .
 
       # - name: Save Docker image
       #   run: docker save ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} > ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
