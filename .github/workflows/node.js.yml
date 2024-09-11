@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Install pnpm
+        run: npm install -g pnpm
       - run: pnpm i
       - run: pnmp eslint && pnpm test
 
@@ -27,6 +29,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20' # 确保使用与你项目兼容的 Node.js 版本
+          
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Get name and version from package.json
         id: get_name_version
