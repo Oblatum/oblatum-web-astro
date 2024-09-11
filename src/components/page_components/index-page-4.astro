@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import BlueprintLogo from "../../assets/imgs/blueprint_logo.png";
 import { FilledButton } from "../ui/md-button";
 ---
 
@@ -11,7 +12,7 @@ import { FilledButton } from "../ui/md-button";
   </div>
   <div class="flex-grow"></div>
   <Image
-    src="/src/assets/imgs/blueprint_logo.png"
+    src={BlueprintLogo.src}
     alt="blueprint_logo"
     loading="lazy"
     decoding="async"

@@ -1,5 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import Cc_by_nc_nd_Logo from "../../assets/svgs/cc_by_nc_nd_logo.svg";
+import Cc_Logo from "../../assets/svgs/cc_logo.svg";
 ---
 
 <div class="mt-32 flex flex-col md:(flex-row-reverse)">
@@ -10,7 +12,7 @@ import { Image } from "astro:assets";
   </div>
   <div class="flex-grow"></div>
   <Image
-    src="/src/assets/svgs/cc_by_nc_nd_logo.svg"
+    src={Cc_by_nc_nd_Logo.src}
     alt="cc_by_nc_nd_logo"
     loading="lazy"
     decoding="async"
@@ -20,7 +22,7 @@ import { Image } from "astro:assets";
   />
 </div>
 <Image
-  src="/src/assets/svgs/cc_logo.svg"
+  src={Cc_Logo.src}
   alt="cc_logo"
   loading="lazy"
   decoding="async"

@@ -1,11 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import ImgBack from "../../assets/svgs/mojitestback.svg";
+import ImgObl from "../../assets/svgs/mojitestobl.svg";
+import ImgFore from "../../assets/svgs/mojitestfore.svg";
 ---
 
 <div class="oblatum_icon_preview_animation relative mt-40">
   <div class="relative mx-auto w-[max-content] md:m-0">
     <Image
-      src="/src/assets/svgs/mojitestback.svg"
+      src={ImgBack.src}
       alt="mojitestback"
       loading="lazy"
       decoding="async"
@@ -14,7 +17,7 @@ import { Image } from "astro:assets";
       class="relative size-48"
     />
     <Image
-      src="/src/assets/svgs/mojitestobl.svg"
+      src={ImgObl.src}
       alt="mojitestobl"
       loading="lazy"
       decoding="async"
@@ -23,7 +26,7 @@ import { Image } from "astro:assets";
       class="absolute left-0 top-0 size-48"
     />
     <Image
-      src="/src/assets/svgs/mojitestfore.svg"
+      src={ImgFore.src}
       alt="mojitestfore"
       loading="lazy"
       decoding="async"

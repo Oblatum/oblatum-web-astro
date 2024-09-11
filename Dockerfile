@@ -1,4 +1,4 @@
-FROM node:lts AS base
+FROM node:alpine AS base
 WORKDIR /app
 # 这里仅复制 package.json 和 package-lock.json，我们确保以下的 `-deps` 步骤与源代码无关。
 # 因此，如果只有源代码发生变化，将会跳过 `-deps` 步骤。
