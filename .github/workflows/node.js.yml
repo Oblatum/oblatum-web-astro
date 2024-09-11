@@ -23,8 +23,12 @@ jobs:
           echo "PACKAGE_NAME=$(node -p 'require(\"./package.json\").name')" >> $GITHUB_ENV
           echo "VERSION=$(node -p 'require(\"./package.json\").version')" >> $GITHUB_ENV
 
+      - name: Debug environment variables
+        run: |
+          echo "PACKAGE_NAME=${{ env.PACKAGE_NAME }}"
+          echo "VERSION=${{ env.VERSION }}"
+
       - name: Build Docker image
-        # 使用从 package.json 获取的名称和版本号作为 Docker 镜像的标签
         run: docker build -t ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} -f Dockerfile .
 
       - name: Save Docker image
