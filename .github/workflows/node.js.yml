@@ -12,21 +12,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build Docker image
-        # 使用多阶段构建，只将最终的运行时依赖项包含在最终镜像中
-        run: |
-          docker build -t oblatum_art_astro:latest -f Dockerfile .
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # 确保使用与你项目兼容的 Node.js 版本
 
-      # docker push pzhown/oblatum_art_astro:latest
+      - name: Get name and version from package.json
+        id: get_name_version
+        run: |
+          echo "PACKAGE_NAME=$(node -p \"require('./package.json').name\")" >> $GITHUB_ENV
+          echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Build Docker image
+        # 使用从 package.json 获取的名称和版本号作为 Docker 镜像的标签
+        run: docker build -t ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} -f Dockerfile .
 
       - name: Save Docker image
-        run: docker save oblatum_art_astro:latest > oblatum_art_astro.tar
+        run: docker save ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} > ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
 
       - name: Upload Docker image
         uses: actions/upload-artifact@v2
         with:
-          name: oblatum_art_astro
-          path: oblatum_art_astro.tar
+          name: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}
+          path: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
@@ -39,4 +47,4 @@ jobs:
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
       - name: Copy Docker image to server
-        run: scp oblatum_art_astro.tar ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/oblatum/oblatum_art_astro.tar
+        run: scp ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/oblatum/${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
