@@ -1,14 +1,14 @@
 ---
-import { Image } from "astro:assets";
-import ImgBack from "../../assets/svgs/mojitestback.svg";
-import ImgFore from "../../assets/svgs/mojitestfore.svg";
-import ImgObl from "../../assets/svgs/mojitestobl.svg";
+import { Image } from 'astro:assets'
+import ImgBack from '~/assets/svgs/mojitestback.svg'
+import ImgFore from '~/assets/svgs/mojitestfore.svg'
+import ImgObl from '~/assets/svgs/mojitestobl.svg';
 ---
 
 <div class="oblatum_icon_preview_animation relative mt-40">
   <div class="relative mx-auto w-[max-content] md:m-0">
     <Image
-      src={ImgBack.src}
+      src={ImgBack}
       alt="mojitestback"
       loading="lazy"
       decoding="async"
@@ -17,7 +17,7 @@ import ImgObl from "../../assets/svgs/mojitestobl.svg";
       class="relative size-48"
     />
     <Image
-      src={ImgObl.src}
+      src={ImgObl}
       alt="mojitestobl"
       loading="lazy"
       decoding="async"
@@ -26,7 +26,7 @@ import ImgObl from "../../assets/svgs/mojitestobl.svg";
       class="absolute left-0 top-0 size-48"
     />
     <Image
-      src={ImgFore.src}
+      src={ImgFore}
       alt="mojitestfore"
       loading="lazy"
       decoding="async"
@@ -37,23 +37,23 @@ import ImgObl from "../../assets/svgs/mojitestobl.svg";
   </div>
 </div>
 <script>
-  import { gsap } from "gsap";
-  import { observeAndAnimateForList } from "~/tools/animation";
+import { gsap } from 'gsap'
+import { observeAndAnimateForList } from '~/tools/animation'
 
-  const img_box = document.querySelector(".oblatum_icon_preview_animation");
-  const imgs = img_box?.querySelectorAll("img");
+const img_box = document.querySelector('.oblatum_icon_preview_animation')
+const imgs = img_box?.querySelectorAll('img')
 
-  function animateImgs(imgs: gsap.TweenTarget, index: number) {
-    gsap.to(imgs, {
-      duration: 10,
-      transformOrigin: "left center",
-      transform: `skew(-15deg ,-5deg) scaleY(0.6) translate(-${index * 36}px , -${index * 96}px)`,
-      delay: 0.5,
-      ease: "power4.out", // 使用 power4.out 缓动函数
-    });
-  }
+function animateImgs(imgs: gsap.TweenTarget, index: number) {
+  gsap.to(imgs, {
+    duration: 10,
+    transformOrigin: 'left center',
+    transform: `skew(-15deg ,-5deg) scaleY(0.6) translate(-${index * 36}px , -${index * 96}px)`,
+    delay: 0.5,
+    ease: 'power4.out', // 使用 power4.out 缓动函数
+  })
+}
 
-  if (img_box && imgs) {
-    observeAndAnimateForList(img_box, imgs, animateImgs, true);
-  }
+if (img_box && imgs) {
+  observeAndAnimateForList(img_box, imgs, animateImgs, true)
+}
 </script>

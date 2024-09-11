@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import Cc_by_nc_nd_Logo from "~/assets/svgs/cc_by_nc_nd_logo.svg";
-import Cc_Logo from "~/assets/svgs/cc_logo.svg";
+import { Image } from 'astro:assets'
+import Cc_by_nc_nd_Logo from '~/assets/svgs/cc_by_nc_nd_logo.svg'
+import Cc_Logo from '~/assets/svgs/cc_logo.svg';
 ---
 
 <div class="mt-32 flex flex-col md:(flex-row-reverse)">
@@ -12,7 +12,7 @@ import Cc_Logo from "~/assets/svgs/cc_logo.svg";
   </div>
   <div class="flex-grow"></div>
   <Image
-    src={Cc_by_nc_nd_Logo.src}
+    src={Cc_by_nc_nd_Logo}
     alt="cc_by_nc_nd_logo"
     loading="lazy"
     decoding="async"
@@ -22,7 +22,7 @@ import Cc_Logo from "~/assets/svgs/cc_logo.svg";
   />
 </div>
 <Image
-  src={Cc_Logo.src}
+  src={Cc_Logo}
   alt="cc_logo"
   loading="lazy"
   decoding="async"
@@ -34,7 +34,7 @@ import Cc_Logo from "~/assets/svgs/cc_logo.svg";
   *更多细则解释请访问<a
     class="text-[var(--md-sys-color-on-primary)]"
     href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-  >
+            >
     creativecommons.org/licenses/by-nc-nd/4.0/</a
   >。
 </p>

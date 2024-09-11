@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import BlueprintLogo from "~/assets/imgs/blueprint_logo.png";
-import { FilledButton } from "~/components/ui/md-button";
+import { Image } from 'astro:assets'
+import BlueprintLogo from '~/assets/imgs/blueprint_logo.png'
+import { FilledButton } from '~/components/ui/md-button';
 ---
 
 <div class="mt-32 flex flex-col md:(flex-row)">
@@ -12,7 +12,7 @@ import { FilledButton } from "~/components/ui/md-button";
   </div>
   <div class="flex-grow"></div>
   <Image
-    src={BlueprintLogo.src}
+    src={BlueprintLogo}
     alt="blueprint_logo"
     loading="lazy"
     decoding="async"
@@ -33,23 +33,23 @@ import { FilledButton } from "~/components/ui/md-button";
   </div>
 </div>
 <script>
-  import { gsap } from "gsap";
-  import { observeAndAnimateForList } from "~/tools/animation";
+import { gsap } from 'gsap'
+import { observeAndAnimateForList } from '~/tools/animation'
 
-  const p_box = document.querySelector(".blueprint_descriptions");
-  const paragraphs = p_box?.querySelectorAll("p");
+const p_box = document.querySelector('.blueprint_descriptions')
+const paragraphs = p_box?.querySelectorAll('p')
 
-  function animateParagraph(paragraph: gsap.TweenTarget, index: number) {
-    gsap.from(paragraph, {
-      opacity: 0,
-      y: 20,
-      duration: 0.5,
-      delay: index * 0.3,
-      ease: "power4.out", // 使用 power4.out 缓动函数
-    });
-  }
+function animateParagraph(paragraph: gsap.TweenTarget, index: number) {
+  gsap.from(paragraph, {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    delay: index * 0.3,
+    ease: 'power4.out', // 使用 power4.out 缓动函数
+  })
+}
 
-  if (p_box && paragraphs) {
-    observeAndAnimateForList(p_box, paragraphs, animateParagraph, true);
-  }
+if (p_box && paragraphs) {
+  observeAndAnimateForList(p_box, paragraphs, animateParagraph, true)
+}
 </script>
