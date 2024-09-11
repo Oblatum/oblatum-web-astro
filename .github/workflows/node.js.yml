@@ -60,6 +60,7 @@ jobs:
       #     name: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}
       #     path: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
       
+      - run: echo ${{ secrets.DOCKER_KEY }} | docker login ghcr.io --username phanatic --password-stdin
       - name: Push Docker image to GitHub Container Registry
         run: docker push ghcr.io/pzhown/${{ env.PACKAGE_NAME }}:${{ env.VERSION }}
 
