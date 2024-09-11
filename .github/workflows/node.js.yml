@@ -20,8 +20,8 @@ jobs:
       - name: Get name and version from package.json
         id: get_name_version
         run: |
-          echo "PACKAGE_NAME=$(node -p \"require('./package.json').name\")" >> $GITHUB_ENV
-          echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+          echo "PACKAGE_NAME=$(node -p 'require(\"./package.json\").name')" >> $GITHUB_ENV
+          echo "VERSION=$(node -p 'require(\"./package.json\").version')" >> $GITHUB_ENV
 
       - name: Build Docker image
         # 使用从 package.json 获取的名称和版本号作为 Docker 镜像的标签
