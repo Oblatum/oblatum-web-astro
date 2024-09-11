@@ -51,15 +51,17 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} -f Dockerfile .
 
-      - name: Save Docker image
-        run: docker save ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} > ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
+      # - name: Save Docker image
+      #   run: docker save ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} > ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
 
-      - name: Upload Docker image
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.PACKAGE_NAME }}:${{ env.VERSION }}
-          path: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
-          run: docker push ghcr.io/pzhown/${{ env.PACKAGE_NAME }}:${{ env.VERSION }}
+      # - name: Upload Docker image
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}
+      #     path: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
+      
+      - name: Push Docker image to GitHub Container Registry
+        run: docker push ghcr.io/pzhown/${{ env.PACKAGE_NAME }}:${{ env.VERSION }}
 
       # - name: Set up SSH
       #   uses: webfactory/ssh-agent@v0.5.3
