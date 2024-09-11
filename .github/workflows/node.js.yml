@@ -13,9 +13,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install
-        run: npm install -g pnpm
-      - run: pnpm i
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: latest
+      
+      - run : pnpm install
       - run: pnpm run build
 
   build-and-save:
@@ -23,56 +26,28 @@ jobs:
     needs: test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20' # 确保使用与你项目兼容的 Node.js 版本
-          
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - uses: pnpm/action-setup@v4
 
-      - name: Get name and version from package.json
-        id: get_name_version
-        run: |
-          PACKAGE_NAME=$(grep -Po '"name":\s*"\K.*?(?=")' package.json)
-          VERSION=$(grep -Po '"version":\s*"\K.*?(?=")' package.json)
-          echo "PACKAGE_NAME=${PACKAGE_NAME}"
-          echo "VERSION=${VERSION}"
-          echo "PACKAGE_NAME=${PACKAGE_NAME}" >> $GITHUB_ENV
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+      - name: set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-      - name: Debug environment variables
-        run: |
-          echo "PACKAGE_NAME=${{ env.PACKAGE_NAME }}"
-          echo "VERSION=${{ env.VERSION }}"
+      - name: set up docker buildx
+        uses: docker/setup-buildx-action@v3
+        id: buildx
 
-      - name: Build Docker image
-        run: docker build -t ghcr.io/pzhown/${{ env.PACKAGE_NAME }}:${{ env.VERSION }} -f Dockerfile .
-
-      # - name: Save Docker image
-      #   run: docker save ${{ env.PACKAGE_NAME }}:${{ env.VERSION }} > ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
-
-      # - name: Upload Docker image
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}
-      #     path: ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar
-      
       - run: echo ${{ secrets.DOCKER_KEY }} | docker login ghcr.io --username phanatic --password-stdin
-      - name: Push Docker image to GitHub Container Registry
-        run: docker push ghcr.io/pzhown/${{ env.PACKAGE_NAME }}:${{ env.VERSION }}
 
-      # - name: Set up SSH
-      #   uses: webfactory/ssh-agent@v0.5.3
-      #   with:
-      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      # - name: Add server to known_hosts
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-
-      # - name: Copy Docker image to server
-      #   run: scp ${{ env.PACKAGE_NAME }}_${{ env.VERSION }}.tar ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/oblatum/${{ env.PACKAGE_NAME }}.tar
+      - name: build and publish ghcr.io docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          builder: ${{ steps.buildx.outputs.name }}
+          file: Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/oblatum/oblatum-web-astro/oblatum-web-astro:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
