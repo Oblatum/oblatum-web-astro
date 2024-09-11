@@ -25,7 +25,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - name: Install
+        run: npm install -g pnpm
 
       - name: set up QEMU
         uses: docker/setup-qemu-action@v3
