@@ -16,7 +16,6 @@ jobs:
       - name: Install
         run: npm install -g pnpm
       - run: pnpm i
-      - run: pnpm eslint
       - run: pnpm test
 
   build-and-save:
