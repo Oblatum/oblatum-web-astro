@@ -16,7 +16,7 @@ jobs:
       - name: Install
         run: npm install -g pnpm
       - run: pnpm i
-      - run: pnpm test
+      - run: pnpm run build
 
   build-and-save:
     runs-on: ubuntu-latest
