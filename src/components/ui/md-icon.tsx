@@ -1,6 +1,6 @@
-import React from 'react'
 import { createComponent } from '@lit/react'
 import { MdIcon } from '@material/web/icon/icon'
+import React from 'react'
 
 const BaseIcon = createComponent({
   tagName: 'md-icon',

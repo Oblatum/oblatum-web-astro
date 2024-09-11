@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import ImgBack from "../../assets/svgs/mojitestback.svg";
-import ImgObl from "../../assets/svgs/mojitestobl.svg";
 import ImgFore from "../../assets/svgs/mojitestfore.svg";
+import ImgObl from "../../assets/svgs/mojitestobl.svg";
 ---
 
 <div class="oblatum_icon_preview_animation relative mt-40">
@@ -38,7 +38,7 @@ import ImgFore from "../../assets/svgs/mojitestfore.svg";
 </div>
 <script>
   import { gsap } from "gsap";
-  import { observeAndAnimateForList } from "../../tools/animation";
+  import { observeAndAnimateForList } from "~/tools/animation";
 
   const img_box = document.querySelector(".oblatum_icon_preview_animation");
   const imgs = img_box?.querySelectorAll("img");

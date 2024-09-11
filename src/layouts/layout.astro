@@ -1,15 +1,15 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ViewTransitions } from 'astro:transitions'
 // import Header from "~/components/header.astro";
 
-import { HeaderMenuConfig } from "~/components/states/router";
+import { HeaderMenuConfig } from '~/components/states/router'
 
 interface Props {
-  active: number;
-  dark?: boolean;
+  active: number
+  dark?: boolean
 }
 
-const { active, dark = false } = Astro.props;
+const { active, dark = false } = Astro.props
 
 const title: string = HeaderMenuConfig[active].name;
 ---
@@ -33,25 +33,25 @@ const title: string = HeaderMenuConfig[active].name;
     <title>{title}</title>
 
     <script>
-      import {
-        applyTheme,
-        argbFromHex,
-        themeFromSourceColor,
-      } from "@material/material-color-utilities";
+import {
+  applyTheme,
+  argbFromHex,
+  themeFromSourceColor,
+} from '@material/material-color-utilities'
 
-      // Get the theme from a hex color
-      const theme = themeFromSourceColor(argbFromHex("#29aae0"));
+// Get the theme from a hex color
+const theme = themeFromSourceColor(argbFromHex('#29aae0'))
 
-      // Print out the theme as JSON
-      //   console.log(JSON.stringify(theme, null, 2));
+// Print out the theme as JSON
+//   console.log(JSON.stringify(theme, null, 2));
 
-      // Check if the user has dark mode turned on
-      const systemDark =
-        window.matchMedia("(prefers-color-scheme: dark)").matches ||
-        document.querySelector(".dark") !== null;
-      // Apply the theme to the body by updating custom properties for material tokens
-      applyTheme(theme, { target: document.body, dark: systemDark });
-    </script>
+// Check if the user has dark mode turned on
+const systemDark
+  = window.matchMedia('(prefers-color-scheme: dark)').matches
+  || document.querySelector('.dark') !== null
+// Apply the theme to the body by updating custom properties for material tokens
+applyTheme(theme, { target: document.body, dark: systemDark })
+</script>
   </head>
   <body class="relative bg-[var(--md-sys-color-background)]">
     <!-- <Header transition:persist client:load active={active} /> -->

@@ -1,7 +1,7 @@
-import React from 'react'
 import { createComponent } from '@lit/react'
 import { MdList } from '@material/web/list/list'
 import { MdListItem } from '@material/web/list/list-item'
+import React from 'react'
 
 export const List = createComponent({
   tagName: 'md-list',
