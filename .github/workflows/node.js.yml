@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # 确保使用与你项目兼容的 Node.js 版本
+          node-version: '20' # 确保使用与你项目兼容的 Node.js 版本
 
       - name: Get name and version from package.json
         id: get_name_version
