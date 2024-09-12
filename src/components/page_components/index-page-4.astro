@@ -1,14 +1,25 @@
 ---
-import { Image } from 'astro:assets'
-import BlueprintLogo from '~/assets/imgs/blueprint_logo.png'
-import { FilledButton } from '~/components/ui/md-button';
+import { Image } from "astro:assets";
+import BlueprintLogo from "~/assets/imgs/blueprint_logo.png";
+import { FilledButton } from "~/components/ui/md-button";
+
+function handleButtonClick() {
+  window.location.href = "https://dashbud.dev/#blueprint";
+}
 ---
 
 <div class="mt-32 flex flex-col md:(flex-row)">
   <div>
     <h1 class="flex-grow poster-h1">基于 Blueprint 开发</h1>
     <p class="poster-p">免费、功能丰富、易于定制的安卓图标包仪表板。</p>
-    <FilledButton className="mt-2">去了解</FilledButton>
+    <FilledButton
+      onClick={() => {
+        handleButtonClick();
+      }}
+      className="mt-2"
+    >
+      去了解
+    </FilledButton>
   </div>
   <div class="flex-grow"></div>
   <Image
@@ -33,23 +44,23 @@ import { FilledButton } from '~/components/ui/md-button';
   </div>
 </div>
 <script>
-import { gsap } from 'gsap'
-import { observeAndAnimateForList } from '~/tools/animation'
+  import { gsap } from "gsap";
+  import { observeAndAnimateForList } from "~/tools/animation";
 
-const p_box = document.querySelector('.blueprint_descriptions')
-const paragraphs = p_box?.querySelectorAll('p')
+  const p_box = document.querySelector(".blueprint_descriptions");
+  const paragraphs = p_box?.querySelectorAll("p");
 
-function animateParagraph(paragraph: gsap.TweenTarget, index: number) {
-  gsap.from(paragraph, {
-    opacity: 0,
-    y: 20,
-    duration: 0.5,
-    delay: index * 0.3,
-    ease: 'power4.out', // 使用 power4.out 缓动函数
-  })
-}
+  function animateParagraph(paragraph: gsap.TweenTarget, index: number) {
+    gsap.from(paragraph, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      delay: index * 0.3,
+      ease: "power4.out", // 使用 power4.out 缓动函数
+    });
+  }
 
-if (p_box && paragraphs) {
-  observeAndAnimateForList(p_box, paragraphs, animateParagraph, true)
-}
+  if (p_box && paragraphs) {
+    observeAndAnimateForList(p_box, paragraphs, animateParagraph, true);
+  }
 </script>

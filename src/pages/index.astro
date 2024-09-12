@@ -1,12 +1,13 @@
 ---
-import Header from '~/components/header.astro'
-import { HomeCard, NewVersonCard } from '~/components/home-card'
-import IndexPage1 from '~/components/page_components/index-page-1.astro'
-import IndexPage2 from '~/components/page_components/index-page-2.astro'
-import IndexPage4 from '~/components/page_components/index-page-4.astro'
-import IndexPage5 from '~/components/page_components/index-page-5.astro'
-import IndexPageFoot from '~/components/page_components/index-page-foot.astro'
-import Layout from '~/layouts/layout.astro'
+import Header from "~/components/header.astro";
+import { HomeCard, NewVersonCard } from "~/components/home-card";
+import IndexPage1 from "~/components/page_components/index-page-1.astro";
+import IndexPage2 from "~/components/page_components/index-page-2.astro";
+import IndexPage3 from "~/components/page_components/index-page-3.astro";
+import IndexPage4 from "~/components/page_components/index-page-4.astro";
+import IndexPage5 from "~/components/page_components/index-page-5.astro";
+import IndexPageFoot from "~/components/page_components/index-page-foot.astro";
+import Layout from "~/layouts/layout.astro";
 
 const active: number = 0;
 ---
@@ -30,6 +31,7 @@ const active: number = 0;
       <div class="relative w-full px-12 md:(max-w-240 min-w-138)">
         <IndexPage1 />
         <IndexPage2 />
+        <IndexPage3 />
         <IndexPage4 />
         <IndexPage5 />
         <IndexPageFoot />

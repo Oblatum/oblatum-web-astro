@@ -1,60 +1,85 @@
 ---
-import { Image } from 'astro:assets'
-import ImgBack from '~/assets/svgs/mojitestback.svg'
-import ImgFore from '~/assets/svgs/mojitestfore.svg'
-import ImgObl from '~/assets/svgs/mojitestobl.svg';
+import { Image } from "astro:assets";
+import ImgBack from "~/assets/svgs/mojitestback.svg";
+import ImgFore from "~/assets/svgs/mojitestfore.svg";
+import ImgObl from "~/assets/svgs/mojitestobl.svg";
+import Wallpaper1 from "~/assets/wallpapers/wallpaper1.png";
 ---
 
-<div class="oblatum_icon_preview_animation relative mt-40">
-  <h1 class="poster-h1 mb-24">糯米纸夹层设计</h1>
-  <div class="relative mx-auto w-[max-content] md:m-0">
-    <Image
-      src={ImgBack}
-      alt="mojitestback"
-      loading="lazy"
-      decoding="async"
-      width={192}
-      height={192}
-      class="relative size-48"
-    />
-    <Image
-      src={ImgObl}
-      alt="mojitestobl"
-      loading="lazy"
-      decoding="async"
-      width={192}
-      height={192}
-      class="absolute left-0 top-0 size-48"
-    />
-    <Image
-      src={ImgFore}
-      alt="mojitestfore"
-      loading="lazy"
-      decoding="async"
-      width={192}
-      height={192}
-      class="absolute left-0 top-0 size-48"
-    />
+<div class="mt-16 md:flex">
+  <div>
+    <h1 class="poster-h1">糯米纸设计</h1>
+    <p class="poster-p">20%不透明度的白色遮罩，</p>
+    <p class="mb-12 poster-p">夹在底板与Logo之间，形成独特的视觉风格。</p>
+  </div>
+  <div class="md:flex-grow"></div>
+  <div class="relative mx-auto w-full md:(mx-0 w-[max-content])">
+    <div
+      class="relative h-64 w-full flex overflow-hidden rounded-4 shadow-2xl md:w-96"
+    >
+      <Image
+        src={Wallpaper1}
+        alt="wallpaper1"
+        loading="lazy"
+        decoding="async"
+        width={1080}
+        height={1920}
+        class="absolute left-0 top-1/2 w-64 rotate-90 transform -translate-y-1/2"
+      />
+    </div>
+    <div
+      class="oblatum_icon_preview_animation absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+      <Image
+        src={ImgBack}
+        alt="mojitestback"
+        loading="lazy"
+        decoding="async"
+        width={192}
+        height={192}
+        class="relative left-0 top-0 size-48"
+      />
+      <Image
+        src={ImgObl}
+        alt="mojitestobl"
+        loading="lazy"
+        decoding="async"
+        width={192}
+        height={192}
+        class="absolute left-0 top-0 size-48"
+      />
+      <Image
+        src={ImgFore}
+        alt="mojitestfore"
+        loading="lazy"
+        decoding="async"
+        width={192}
+        height={192}
+        class="absolute left-0 top-0 size-48"
+      />
+    </div>
   </div>
 </div>
 <script>
-import { gsap } from 'gsap'
-import { observeAndAnimateForList } from '~/tools/animation'
+  import { gsap } from "gsap";
+  import { observeAndAnimateForList } from "~/tools/animation";
 
-const img_box = document.querySelector('.oblatum_icon_preview_animation')
-const imgs = img_box?.querySelectorAll('img')
+  const img_box = document.querySelector(".oblatum_icon_preview_animation");
+  const imgs = img_box?.querySelectorAll(
+    "img"
+  ) as NodeListOf<HTMLParagraphElement>;
 
-function animateImgs(imgs: gsap.TweenTarget, index: number) {
-  gsap.to(imgs, {
-    duration: 10,
-    transformOrigin: 'left center',
-    transform: `skew(-15deg ,-5deg) scaleY(0.6) translate(-${index * 36}px , -${index * 96}px)`,
-    delay: 0.5,
-    ease: 'power4.out', // 使用 power4.out 缓动函数
-  })
-}
+  function animateImgs(imgs: gsap.TweenTarget, index: number) {
+    gsap.to(imgs, {
+      duration: 10,
+      transformOrigin: "left center",
+      transform: `skew(-15deg ,-5deg) scaleY(0.6) translate(${index * -24}px , ${index * -96 + 72}px)`,
+      delay: 0.5,
+      ease: "power4.out", // 使用 power4.out 缓动函数
+    });
+  }
 
-if (img_box && imgs) {
-  observeAndAnimateForList(img_box, imgs, animateImgs, true)
-}
+  if (img_box && imgs) {
+    observeAndAnimateForList(img_box, imgs, animateImgs, true);
+  }
 </script>
