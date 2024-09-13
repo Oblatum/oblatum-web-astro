@@ -2,24 +2,13 @@
 import { Image } from "astro:assets";
 import BlueprintLogo from "~/assets/imgs/blueprint_logo.png";
 import { FilledButton } from "~/components/ui/md-button";
-
-function handleButtonClick() {
-  window.location.href = "https://dashbud.dev/#blueprint";
-}
 ---
 
 <div class="mt-32 flex flex-col md:(flex-row)">
   <div>
     <h1 class="flex-grow poster-h1">基于 Blueprint 开发</h1>
     <p class="poster-p">免费、功能丰富、易于定制的安卓图标包仪表板。</p>
-    <FilledButton
-      onClick={() => {
-        handleButtonClick();
-      }}
-      className="mt-2"
-    >
-      去了解
-    </FilledButton>
+    <FilledButton id="blueprint_button" className="mt-2"> 去了解 </FilledButton>
   </div>
   <div class="flex-grow"></div>
   <Image
@@ -63,4 +52,11 @@ function handleButtonClick() {
   if (p_box && paragraphs) {
     observeAndAnimateForList(p_box, paragraphs, animateParagraph, true);
   }
+
+  function handleButtonClick() {
+    window.location.href = "https://dashbud.dev/#blueprint";
+  }
+
+  const button = document.getElementById("blueprint_button");
+  button?.addEventListener("click", handleButtonClick);
 </script>
