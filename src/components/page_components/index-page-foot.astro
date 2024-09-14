@@ -1,9 +1,10 @@
 ---
-import { FilledTonalIconButton } from '~/components/ui/md-button';
+import { FilledTonalIconButton } from "~/components/ui/md-button";
 ---
 
 <div
   class="w-full flex flex-wrap items-center justify-center gap-6 py-24 op-80 [&>p]:text-[var(--md-sys-color-secondary-container)]"
+  id="contact_us"
 >
   <p>——</p>
   <FilledTonalIconButton>
@@ -19,7 +20,30 @@ import { FilledTonalIconButton } from '~/components/ui/md-button';
   <div
     class="w-full flex flex-col items-center justify-center [&>p]:(text-[10px] text-[var(--md-sys-color-secondary-container)])"
   >
-    <p>OpenSource 2024 Oblatum Org.</p>
-    <p>Powered by Astro.Js</p>
+    <p>QQ群 | 电报群 | 兔小巢</p>
   </div>
 </div>
+<script>
+  const contact_us = document.getElementById("contact_us");
+  const contact_us_btns = contact_us?.querySelectorAll(
+    "md-filled-tonal-icon-button"
+  );
+
+  contact_us_btns?.forEach((btn, key) => {
+    btn.addEventListener("click", () => {
+      switch (key) {
+        case 0:
+          window.open("https://qm.qq.com/q/CFh6IIXMIK");
+          break;
+        case 1:
+          window.open("https://t.me/oblatumgroup");
+          break;
+        case 2:
+          window.open("https://support.qq.com/products/133538");
+          break;
+        default:
+          break;
+      }
+    });
+  });
+</script>

@@ -34,7 +34,7 @@ export default defineConfig({
     transformerCompileClass(),
   ],
   shortcuts: [{
-    'poster-h1': 'text-3xl font-600 line-height-loose',
-    'poster-p': 'opacity-65',
+    'poster-h1': 'text-3xl font-600 line-height-loose text-white',
+    'poster-p': 'opacity-95',
   }],
 })

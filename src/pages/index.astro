@@ -1,6 +1,7 @@
 ---
+import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import { HomeCard, NewVersonCard } from "~/components/home-card";
+import { NewVersonCard } from "~/components/home-card";
 import IndexPage1 from "~/components/page_components/index-page-1.astro";
 import IndexPage2 from "~/components/page_components/index-page-2.astro";
 import IndexPage3 from "~/components/page_components/index-page-3.astro";
@@ -22,8 +23,8 @@ const active: number = 0;
           class="sticky left-0 top-0 h-100dvh w-full overflow-hidden bg-[var(--md-sys-color-background)]"
         >
           <div
-            class="absolute left-1/2 left-1/2 h-[max(180dvw,180dvh)] w-[max(180dvw,180dvh)] translate-y-2/5 -bottom-48 -translate-x-1/2 md:(translate-y-3/5 -bottom-8)"
-            style="background:radial-gradient(at center, #92FFFF, #29ABE2, #033144,var(--md-sys-color-background), var(--md-sys-color-background));"
+            class="absolute left-1/2 left-1/2 h-[max(180dvw,180dvh)] w-[max(180dvw,180dvh)] translate-y-2/5 transition-colors transition-duration-1000 -bottom-48 -translate-x-1/2 md:(translate-y-3/5 -bottom-8)"
+            style="background:radial-gradient(at center, var(--oblatum-poster-light), var(--oblatum-poster-primary), var(--oblatum-poster-dark),var(--md-sys-color-background), var(--md-sys-color-background));"
           >
           </div>
         </div>
@@ -41,10 +42,15 @@ const active: number = 0;
       class="grid w-full gap-12 px-8 py-12 md:(grid-cols-2 mx-auto max-w-240)"
     >
       <NewVersonCard client:idle />
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
     </div>
+    <Footer />
   </div>
+  <script>
+    window.onload = () => {
+      const body = document.querySelector("body");
+      body?.style.setProperty("--oblatum-poster-light", "#92FFFF");
+      body?.style.setProperty("--oblatum-poster-primary", "#29ABE2");
+      body?.style.setProperty("--oblatum-poster-dark", "#033144");
+    };
+  </script>
 </Layout>
