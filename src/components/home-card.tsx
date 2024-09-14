@@ -19,7 +19,7 @@ export function HomeCard({ className, children, title }: baseProps) {
 export function NewVersonCard() {
   return (
     <HomeCard className="col-span-full" title="新版本">
-      <div className="mt-8 flex flex-col gap-4 md:block">
+      <div className="mt-8 flex flex-col gap-4 md:block" id="download">
         <h1 className="text-3xl font-bold md:mb-4">
           V3.0.24.8.28
           <br className="md:hidden" />
@@ -30,8 +30,8 @@ export function NewVersonCard() {
           <p className="">2、修复：appfilter未带包名</p>
         </div>
         <div className="flex gap-4">
-          <FilledButton>下载APK</FilledButton>
-          <TextButton>查看更新详情</TextButton>
+          <FilledButton onClick={() => { window.open('./public/apks/com.oblatum.iconpack.apk') }}>下载APK</FilledButton>
+          <TextButton onClick={() => { window.open('https://github.com/Oblatum/Oblatum-IconPack-Reborn/commit/913d6274902b260dd3c353d4b6fac1365f65c6d4') }}>查看更新详情</TextButton>
         </div>
       </div>
     </HomeCard>
