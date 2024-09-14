@@ -8,6 +8,23 @@ import Icons from "./index-page-3-com";
     id="pg3-sticky"
     class="sticky top-1/3 h-80 flex items-center justify-center"
   >
-    <h1 class="poster-h1">超1000+适配</h1>
+    <h1 class="poster-h1 text-shadow-xl">超1000+适配</h1>
   </div>
 </div>
+<script>
+  import { gsap } from "gsap";
+  import { observeAndAnimateForList } from "~/tools/animation";
+
+  const box = document.querySelector(".index_page_3-box");
+  const icons = box?.querySelectorAll(".index_page_3-icon");
+  function index_page_3_icons_animation(icon: gsap.TweenTarget) {
+    gsap.from(icon, {
+      opacity: 0,
+      scale: 1.2,
+      duration: 0.5,
+      delay: gsap.utils.random(0.5, 1.5),
+      ease: "power4.out",
+    });
+  }
+  observeAndAnimateForList(box, icons, index_page_3_icons_animation, true);
+</script>
