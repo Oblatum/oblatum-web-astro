@@ -30,7 +30,7 @@ export function NewVersonCard() {
           <p className="">2、修复：appfilter未带包名</p>
         </div>
         <div className="flex gap-4">
-          <FilledButton onClick={() => { window.open('./public/apks/com.oblatum.iconpack.apk') }}>下载APK</FilledButton>
+          <FilledButton onClick={() => { window.open('/apks/com.oblatum.iconpack.apk') }}>下载APK</FilledButton>
           <TextButton onClick={() => { window.open('https://github.com/Oblatum/Oblatum-IconPack-Reborn/commit/913d6274902b260dd3c353d4b6fac1365f65c6d4') }}>查看更新详情</TextButton>
         </div>
       </div>
