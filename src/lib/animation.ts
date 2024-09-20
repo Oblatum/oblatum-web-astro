@@ -1,5 +1,3 @@
-import { Item } from '@material/web/labs/item/internal/item'
-
 /**
  * 动画函数接口
  */
