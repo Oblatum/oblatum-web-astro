@@ -1,7 +1,20 @@
 ---
+import console from 'node:console'
 import { IconPreview } from '~/components/home'
 
-const weatherIcons: string[] = ['weather_1.png', 'weather_12.png', 'weather_19.png', 'weather_34.png', 'weather_37.png', 'weather_44.png', 'weather_12.png', 'weather_19.png', 'weather_34.png']
+const oblatumIcons: string[] = []
+// 从public/icons/oblatum文件夹中导入图标
+const icons = import.meta.glob('/public//icons/oblatum/*', { eager: true })
+const iconKeys = Object.keys(icons)
+
+while (oblatumIcons.length < 9) {
+  const icon = iconKeys[Math.floor(Math.random() * iconKeys.length)].split('icons/').pop() as string
+  if (!oblatumIcons.includes(icon)) {
+    oblatumIcons.push(icon)
+  }
+}
+
+console.log(oblatumIcons);
 ---
 
 <div class="min-h-[100dvh] flex flex-col">
@@ -16,7 +29,7 @@ const weatherIcons: string[] = ['weather_1.png', 'weather_12.png', 'weather_19.p
     </p>
     <IconPreview client:idle>
       {
-        weatherIcons.map(i => (
+        oblatumIcons.map(i => (
           <div class="mx-auto size-16 md:(size-24)">
             <img src=`/icons/${i}` alt={i} width={200} height={200} loading="lazy" decoding="async" />
           </div>

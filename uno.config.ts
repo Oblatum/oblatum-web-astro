@@ -35,6 +35,6 @@ export default defineConfig({
   ],
   shortcuts: [{
     'poster-h1': 'text-3xl font-600 line-height-loose text-white',
-    'poster-p': 'opacity-95',
+    'poster-p': 'opacity-75',
   }],
 })
