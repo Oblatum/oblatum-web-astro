@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Oblatum_3_Img from "~/assets/imgs/ic_launcher-playstore.png";
+import Oblatum_3_Svg from "~/assets/svgs/oblatum_3.0.svg";
 // import { HeaderMenu } from "~/components/header.tsx";
 
 // interface Props {
@@ -17,7 +17,7 @@ import Oblatum_3_Img from "~/assets/imgs/ic_launcher-playstore.png";
   <slot>
     <div class="flex flex-col">
       <p
-        class="pt-1 text-[13px] text-[var(--md-sys-color-on-background)] font-bold tracking-[0.14rem] op-70"
+        class="pt-1 text-[13px] text-[var(--md-sys-color-on-background)] font-600 tracking-[0.14rem] op-70"
       >
         Oblatum 图标
       </p>
@@ -31,7 +31,7 @@ import Oblatum_3_Img from "~/assets/imgs/ic_launcher-playstore.png";
 
   <span class="size-8 overflow-hidden">
     <Image
-      src={Oblatum_3_Img}
+      src={Oblatum_3_Svg}
       alt="Oblatum Iconpack"
       loading="lazy"
       decoding="async"
