@@ -1,7 +1,7 @@
 ---
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import { NewVersonCard } from "~/components/home-card";
+import { DevoloperCard, NewVersonCard, PyCard } from "~/components/home-card";
 import IndexPage1 from "~/components/page_components/index-page-1.astro";
 import IndexPage2 from "~/components/page_components/index-page-2.astro";
 import IndexPage3 from "~/components/page_components/index-page-3.astro";
@@ -39,9 +39,11 @@ const active: number = 0;
       </div>
     </div>
     <div
-      class="grid w-full gap-12 px-8 py-12 md:(grid-cols-2 mx-auto max-w-240)"
+      class="grid w-full gap-12 px-4 py-12 md:(grid-cols-2 mx-auto max-w-240)"
     >
       <NewVersonCard client:idle />
+      <DevoloperCard client:idle />
+      <PyCard client:idle />
     </div>
     <Footer />
   </div>
