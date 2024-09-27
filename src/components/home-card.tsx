@@ -24,13 +24,14 @@ export function NewVersonCard() {
   const [version, setVersion] = useState('0.0.0')
   const [whatsNew, setWhatsNew] = useState('')
   async function getVerson() {
-    fetch('http://raw.oblatum.art/releases.json')
+    fetch('https://raw.oblatum.art/releases.json')
       .then(response => response.json())
       .then((data) => {
         setVersion(data[0].tag_name)
         setWhatsNew(data[0].body.split('## What\'s Changed\r\n')[1])
       })
       .catch((err) => {
+        setWhatsNew('获取更新信息失败，请稍后再试')
         console.error('Fetch error:', err)
       })
     // //如果text[0]不存在，说明没有release，直接返回
