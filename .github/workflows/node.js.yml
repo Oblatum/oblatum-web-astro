@@ -31,6 +31,8 @@ jobs:
       - name: Install
         run: npm install -g pnpm
 
+      - run: echo ${{ secrets.DOCKERHUB_KEY }} | docker login -u pzhown -p ${{ secrets.DOCKERHUB_KEY }}
+
       - name: set up QEMU
         uses: docker/setup-qemu-action@v3
 
