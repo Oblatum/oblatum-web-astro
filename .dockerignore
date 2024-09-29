@@ -1,3 +1,4 @@
 .DS_Store
+.idx
 node_modules
 dist
