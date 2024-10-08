@@ -61,7 +61,7 @@ export function NewVersonCard() {
           <Markdown remarkPlugins={[remarkGfm]}>{whatsNew}</Markdown>
         </div>
         <div className="flex gap-4">
-          <FilledButton onClick={() => { window.open('http://raw.oblatum.art/oblatum_iconpack_latest.apk') }}>下载APK</FilledButton>
+          <FilledButton onClick={() => { window.open('https://raw.oblatum.art/oblatum_iconpack_latest.apk') }}>下载APK</FilledButton>
           <TextButton onClick={() => { window.open('https://github.com/Oblatum/Oblatum-IconPack-Reborn/commit/master') }}>查看更新详情</TextButton>
         </div>
       </div>
