@@ -57,7 +57,7 @@ export function NewVersonCard() {
           <br className="md:hidden" />
           现已推送！
         </h1>
-        <div className="rounded-2 bg-[var(--md-sys-color-on-secondary)] px-8 py-6 md:mb-4 [&>*]:(text-sm text-[var(--md-sys-color-inverse-surface)])">
+        <div className="rounded-2 bg-[var(--md-sys-color-on-secondary)] px-8 py-6 md:mb-4 [&>*]:(text-sm break-all text-[var(--md-sys-color-inverse-surface)])">
           <Markdown remarkPlugins={[remarkGfm]}>{whatsNew}</Markdown>
         </div>
         <div className="flex gap-4">
