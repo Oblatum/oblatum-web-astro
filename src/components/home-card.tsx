@@ -24,7 +24,7 @@ export function NewVersonCard() {
   const [version, setVersion] = useState('0.0.0')
   const [whatsNew, setWhatsNew] = useState('')
   async function getVerson() {
-    fetch('https://raw.oblatum.art/releases.json')
+    fetch('https://oblatumraw.pzhown.cn/releases.json')
       .then(response => response.json())
       .then((data) => {
         setVersion(data[0].tag_name)
@@ -61,7 +61,7 @@ export function NewVersonCard() {
           <Markdown remarkPlugins={[remarkGfm]}>{whatsNew}</Markdown>
         </div>
         <div className="flex gap-4">
-          <FilledButton onClick={() => { window.open('https://raw.oblatum.art/oblatum_iconpack_latest.apk') }}>下载APK</FilledButton>
+          <FilledButton onClick={() => { window.open('https://oblatumraw.pzhown.cn/oblatum_iconpack_latest.apk') }}>下载APK</FilledButton>
           <TextButton onClick={() => { window.open('https://github.com/Oblatum/Oblatum-IconPack-Reborn/commit/master') }}>查看更新详情</TextButton>
         </div>
       </div>
